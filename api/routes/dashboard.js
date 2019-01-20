@@ -3,17 +3,22 @@ const router = express.Router();
 const Budget = require('../models/budget');
 
 //  Get initial dashboard
-router.get('/', (req, res, next) => {
+router.get('/', async (req, res, next) => {
     //  Get session date for id
+    const user = req.session.userId;
     //  Find by user
+    try {
+        const result = await Budget.find({owner:user});
+        res.status(200).json({result});
+    } catch (error) {
+        res.status(404).json({message: 'Error'});
+    }
     //  Only give back budget items per the user
-        res.status(200).json({
-            message:'good to go'
-        });
+
 });
 
 // Get ONE budget item
-router.get('/:id', (req, res, next)=> {
+router.get('/:id', (req, res, next) => {
     //  Get session information for user
     //  Check to see if the user owns the budget item
     //  If they do, return it
@@ -21,11 +26,47 @@ router.get('/:id', (req, res, next)=> {
 });
 
 //  Create ONE budget item
-router.post('/', (req, res, next) => {
+router.post('/add', async (req, res, next) => {
     //  Get session id for user
+    const user = req.session.userId;
+    console.log('USER::::: ' + user);
+
     //  Pull in request params
+    const {
+        name,
+        category,
+        expense,
+        amount,
+        description
+    } = req.body;
+
     //  validate anything
     //  if all is good, save it to database
+
+    try {
+        const budgetItem = new Budget({
+            name,
+            category,
+            owner: user,
+            expense,
+            amount,
+            description
+        });
+
+        const saveBudget = await budgetItem.save();
+
+        res.status(200).json({
+            message: 'Item saved',
+            saveBudget
+        });
+
+    } catch (error) {
+        res.status(500).json({
+            message: 'Error',
+            error
+        });
+    }
+
 });
 
 //  Update a budget item
@@ -37,9 +78,25 @@ router.patch('/:id', (req, res, next) => {
 });
 
 //  Delete a budget item
-router.delete('/:id', (req, res, next) => {
+router.delete('/:id', async (req, res, next) => {
     //  Get session id for user
+    const user =req.session.userId;
     //  Check if user owns the id
+    try {
+
+        const budgetItem = await Budget.findByIdAndRemove({
+            owner:user,
+            _id: req.params.id
+        });
+        res.status(200).json({
+            message: 'Item removed'
+        })
+
+    } catch (error) {
+        res.status(404).json({
+            message: '404 - Document not found.'
+        })
+    }
     //  If user owns the id, delete item
 });
 

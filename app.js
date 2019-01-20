@@ -58,6 +58,9 @@ app.use('/', require('./api/routes/index'));
 //  Users Route
 app.use('/users', require('./api/routes/users'));
 
+//  Dashboard
+app.use('/dashboard', require('./api/routes/dashboard'));
+
 //  Admin Route
 //  Using auth middleware to protect endpoint and ensure login
 app.use('/admin', auth, require('./api/routes/admin'));

@@ -3,11 +3,11 @@
 const mongoose = require('mongoose');
 
 const budgetSchema = new mongoose.Schema({
-    _id: mongoose.Schema.Types.ObjectId,
 
     name: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     category: {
         type: String,
@@ -42,4 +42,4 @@ budgetSchema.methods.setCurrentTime = function(cb) {
     return cb;
 };
 
-module.exports = mongoose.model('Budget', userSchema);
+module.exports = mongoose.model('Budget', budgetSchema);
