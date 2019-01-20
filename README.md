@@ -1,8 +1,8 @@
-# NodeJS_Users
-A basic user login system intended for a 'starter' application.
-Mostly working with a bug or two.  Uses sessions and cookies to protect routes. JWT is added in for use if need be.
+# Bulgae
+Bulgae is Latin for budget, money, purse, wallet, etc. The idea here is to create an online budgeting application which is easy to use, simple, and enormously useful.
 
-Will update this once it's near complete, or at least working as intended.
+The project will be MEVN based SPA with an easy to use interface.
+
 
 ## Postman
-[Here](https://documenter.getpostman.com/view/6355920/RznJmGX2) is the link to the Postman documentation.
+I will update the documentation as the projects routes are finished.
