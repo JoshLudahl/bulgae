@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="/static/styles/login.css">
+
+  <title>Bulgae - Please Register</title>
+
+</head>
+
+<body>
+
+  <!-- Login Section -->
+
+  <body>
+      <div class="brand">Bulgae</div>
+    <div class="login">
+      <div class="login-screen">
+        <div class="app-title">
+          <h1>Sign up</h1>
+        </div>
+
+        <div class="login-form">
+          <form action="/users/" method="POST">
+            <div class="control-group">
+              <input name="email" type="text" class="login-field" value="" placeholder="Email" id="login-name">
+              <label class="login-field-icon fui-user" for="login-name"></label>
+            </div>
+
+            <div class="control-group">
+              <input name="password" type="password" class="login-field" value="" placeholder="Password" id="login-pass">
+              <label class="login-field-icon fui-lock" for="login-pass"></label>
+            </div>
+
+            <div class="control-group">
+              <input name="password2" type="password" class="login-field" value="" placeholder="Confirm Password" id="login-pass">
+              <label class="login-field-icon fui-lock" for="login-pass"></label>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-large btn-block">Register</button>
+
+            <a class="login-link" href="/users/login">Already a member? Login here.</a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+  <!-- END Login Section -->
+</body>
+
+</html>

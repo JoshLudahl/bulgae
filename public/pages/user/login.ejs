@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0" />
+
+
+  <link rel="stylesheet" href="/static/styles/login.css">
+
+  <title>Bulgae - Please Login</title>
+
+</head>
+
+<body>
+
+  <!-- Login Section -->
+  <body>
+    <div class="brand">
+      Bulgae
+    </div>
+
+      <div class="login">
+        <div class="login-screen">
+          <div class="app-title">
+            <h1>Sign in</h1>
+          </div>
+
+          <div class="login-form">
+            <form action="/users/login" method="POST">
+            <div class="control-group">
+            <input name="email" type="text" class="login-field" value="" placeholder="Email" id="login-name">
+            <label class="login-field-icon fui-user" for="login-name"></label>
+            </div>
+
+            <div class="control-group">
+            <input name="password" type="password" class="login-field" value="" placeholder="Password" id="login-pass">
+            <label class="login-field-icon fui-lock" for="login-pass"></label>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-large btn-block">Login</button>
+            <a class="login-link" href="#">Lost your password?</a>
+            <a class="login-link" href="/users/register">Not a member? Sign-up here.</a>
+          </form>
+          </div>
+        </div>
+      </div>
+    </body>
+    <!-- END Login Section -->
+</body>
+
+</html>

@@ -11,15 +11,15 @@ const bcrypt = require("bcryptjs");
 
 //  Default to load login
 router.get('/', (req, res, next) => {
-  res.render('pages/user/login');
+  res.render('user/login');
 });
 // GET Login
 router.get('/login', (req, res, next) => {
-  res.render('pages/user/login');
+  res.render('user/login');
 });
 //  Get Register page
 router.get('/register', (req, res, next) => {
-  res.render('pages/user/register');
+  res.render('user/register');
 });
 
 //  Get ALL users
@@ -92,21 +92,22 @@ router.post("/", (req, res, next) => {
               User.create(user)
                 .then(result => {
                   //  do something if need be, maybe log in, or whatever
+                  res.status(201).json({
+                    message: "Okay, POST was good",
+                    createdUser: {
+                      id: user._id,
+                      email: user.email
+                    }
+                  });
                 })
                 .catch(err => console.log(err));
-              res.status(201).json({
-                message: "Okay, POST was good",
-                createdUser: {
-                  id: user._id,
-                  email: user.email
-                }
-              });
             }
           });
+        } else {
+          res.status(200).json({
+            message: 'passwords do not match'
+          });
         }
-        res.status(200).json({
-          message: 'passwords do not match'
-        });
       }
     });
 });

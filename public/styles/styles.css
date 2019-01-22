@@ -1,0 +1,17 @@
+.nav {
+    font-size: 1em;
+    text-align: right;
+}
+
+ul.nav {
+    list-style-type: none;
+    display: inline-block;
+}
+ul.nav > li {
+    display: inline;
+    padding-inline-start: 10px;
+}
+
+ul.nav > li a {
+    color: #ff6600;
+}

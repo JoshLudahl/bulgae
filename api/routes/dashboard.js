@@ -70,9 +70,32 @@ router.post('/add', async (req, res, next) => {
 });
 
 //  Update a budget item
-router.patch('/:id', (req, res, next) => {
+router.patch('/:id', async (req, res, next) => {
     //  Get session id for user
+    const user = req.session.userId;
     //  check if user owns the budget item
+    try {
+        const updater = await Budget.findOneAndUpdate({
+            _id: req.params.id,
+            owner: user
+        }, req.body);
+        if (updater != null) {
+            res.status(200).json({
+                message: 'Item Updated',
+                updated: req.body
+            })
+        } else {
+            res.status(404).json({
+                message: 'Error, item not found.'
+            })
+        }
+
+    } catch (error) {
+        res.status(404).json({
+            status: 404,
+            message: 'Sorry, the requested item was not found.'
+        });
+    }
     //  Update budget item if user is owner
 
 });
@@ -80,7 +103,7 @@ router.patch('/:id', (req, res, next) => {
 //  Delete a budget item
 router.delete('/:id', async (req, res, next) => {
     //  Get session id for user
-    const user =req.session.userId;
+    const user = req.session.userId;
     //  Check if user owns the id
     try {
 

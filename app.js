@@ -32,9 +32,9 @@ app.use((req, res, next) => {
 });
 
 //  Paths
-app.set('views', path.join(__dirname, '/api/view'));
+app.set('views', path.join(__dirname, '/public/pages'));
 app.set('view engine', 'ejs');
-app.use(express.static(__dirname + '/public'));
+app.use('/static', express.static(__dirname + '/public'));
 
 //  Cookies
 app.set('trust proxy', 1) // trust first proxy
