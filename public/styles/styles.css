@@ -1,17 +1,20 @@
-.nav {
-    font-size: 1em;
-    text-align: right;
+
+/*
+*
+*   Landing page
+*
+*/
+.splash-blue {
+    color: #333333;
+    background-color: #33ccff;
+}
+.is-white {
+    color: #333333;
+    background-color: #fff;
 }
 
-ul.nav {
-    list-style-type: none;
-    display: inline-block;
-}
-ul.nav > li {
-    display: inline;
-    padding-inline-start: 10px;
+.larger {
+    font-size: 80px;
 }
 
-ul.nav > li a {
-    color: #ff6600;
-}
+

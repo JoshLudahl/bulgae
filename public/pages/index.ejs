@@ -2,68 +2,157 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- Bulma - https://bulma.io/  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
+  <!-- Font Awesome - https://fontawesome.com -->
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 
-    <!-- Undernet Framework -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/undernet@3.2.1/dist/undernet.min.css" integrity="sha256-8x/TroXJnYs/aEWW9kydprsIuSRRMWarYaqOkKZuHMs="
-        crossorigin="anonymous">
 
 
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/static/styles/styles.css">
+  <link rel="stylesheet" href="/static/styles/fancyfont.css">
 
-    <link rel="stylesheet" href="/static/styles/styles.css">
-    <link rel="stylesheet" href="/static/styles/fancyfont.css">
-
-    <title>Bulgae - Budgeting is fun!</title>
+  <title>Bulgae - Budgeting is fun!</title>
 </head>
 
 <body>
-        <div class="grid has-no-padding">
-                <div class="row has-no-padding">
-                  <div class="column has-no-padding nav">
-                    <ul class="nav">
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/dashboard">Dashboard</a></li>
-                        <li>Profile</li>
-                        <li><a href="/users/login">Login | Logout</a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-    <div class="fullscreen grid">
 
-        <div class="row">
-          <div class="column">
-                <div class="text">
-                        <p class="collective">Budgets are</p>
-                        <p class="collective">
-                          <span class="word wisteria">smart.</span>
-                          <span class="word belize">wonderful.</span>
-                          <span class="word pomegranate">easy.</span>
-                          <span class="word green">useful.</span>
-                          <span class="word midnight">empowering.</span>
-                        </p>
-                      </div>
+  <section class="hero is-large is-fullheight">
+    <div class="hero-head">
+      <nav class="navbar">
+        <div class="container">
+          <div class="navbar-brand">
+            <a class="navbar-item">
+              Bulgae
+            </a>
+            <span class="navbar-burger burger" data-target="navbarMenuHeroB">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
           </div>
-        </div>
-      </div>
-
-
-      <div class="fullscreen grid second">
-            <div class="row is-aligned-bottom has-content-bottom">
-              <div class="column">
-                <p>I’m at the bottom.</p>
-              </div>
+          <div id="navbarMenuHeroB" class="navbar-menu">
+            <div class="navbar-end">
+              <a class="navbar-item is-active">
+                Home
+              </a>
+              <a href="#about" class="navbar-item">
+                Benefits
+              </a>
+              <a class="navbar-item">
+                About
+              </a>
+              <a class="navbar-item">
+                Contact
+              </a>
+              <span class="navbar-item">
+                <a href="/users/login" class="button is-info">
+                  <span class="icon">
+                    <i class="fas fa-sign-in-alt"></i>
+                  </span>
+                  <span>Sign-in</span>
+                </a>
+              </span>
+              <a class="navbar-item">
+                Sign-up
+              </a>
             </div>
           </div>
+        </div>
+      </nav>
+    </div>
 
-<script type="text/javascript" src="static/javascript/fancyfont.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/undernet@3.2.1/dist/undernet.bundle.min.js"
-        integrity="sha256-Z/WIDzOB1TR2AmD0ILIyYevSXPG7AFZQElRWhS1Z0Kc=" crossorigin="anonymous"></script>
-    <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', Undernet.start())
-    </script>
+    <div class="hero-body is-white">
+      <div class="container has-text-centered">
+        <div class="text">
+          <p class="collective">Budgets are</p>
+          <p class="collective">
+            <span class="word wisteria">smart.</span>
+            <span class="word belize">wonderful.</span>
+            <span class="word pomegranate">easy.</span>
+            <span class="word green">useful.</span>
+            <span class="word midnight">empowering.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+
+  <section class="hero is-info is-fullheight">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">Benefits</h1>
+        <h2 class="subtitle">
+          A simple container to divide your page into <strong>sections</strong>, like the one you're currently reading
+        </h2>
+      </div>
+  </section>
+
+  <section class="hero is-white is-fullheight">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">About</h1>
+        <h2 class="subtitle">
+          A simple container to divide your page into <strong>sections</strong>, like the one you're currently reading
+        </h2>
+        <div class="columns is-vcentered is-centered has-text-centered">
+          <div class="column is-one-third larger">
+            <span class="fa-stack" style="vertical-align: top;">
+              <i class="far fa-circle fa-stack-2x"></i>
+              <i class="fas fa-flag fa-stack-1x"></i>
+            </span>
+          </div>
+          <div class="column splash-blue ">
+            <span class="fa-stack larger" style="vertical-align: top;">
+              <i class="far fa-circle fa-stack-2x"></i>
+              <i class="fas fa-flag fa-stack-1x"></i>
+            </span><br>
+            <h1 class="title is-3">Title 1</h1>
+            <h1 class="subtitle is-5">Subtitle 1</h1>
+
+          </div>
+          <div class="column larger">
+            <span class="fa-stack" style="vertical-align: top;">
+              <i class="far fa-circle fa-stack-2x"></i>
+              <i class="fas fa-flag fa-stack-1x"></i>
+            </span>
+          </div>
+        </div>
+
+
+      </div>
+  </section>
+
+  <section class="hero is-info is-fullheight">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">Contact</h1>
+        <h2 class="subtitle">
+          A simple container to divide your page into <strong>sections</strong>, like the one you're currently reading
+        </h2>
+      </div>
+  </section>
+
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+        <strong>Bulgae</strong> by <a href="http://ludahl.com">Josh Ludahl</a>. Made with <i class="fas fa-beer"></i>
+        and <i class="fas fa-coffee"></i>.
+      </p>
+    </div>
+  </footer>
+
+
+  <!-- Scripts -->
+  <script type="text/javascript" src="static/javascript/fancyfont.js"></script>
+  <script type="text/javascript" src="static/javascript/bulma.js"></script>
+
 </body>
 
 </html>

@@ -1,16 +1,40 @@
 <!DOCTYPE html>
-
 <html>
-    <head>
-        <meta charset="utf-8">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ Welcome }}</title>
+    <!-- Bulma - https://bulma.io/  -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css"
+    />
+    <!-- Font Awesome - https://fontawesome.com -->
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
+    ></script>
 
-    </head>
-    <body>
+    <!-- Custom Styles -->
 
-        <main>
-            <h1>Admin Area</h1>
-            <h2>huh????</h2>
-            <h3><a href="http://localhost:3000/users/5c37d7ac17fd6a4d300960b6">get one user</a></h3>
-        </main>
-    </body>
+  </head>
+  <body>
+    <section class="section">
+      <div class="container">
+        <h1 class="title">Welcome, {{ USERNAME }}</h1>
+        <p class="subtitle">
+          My first website with <strong>{{ ADMIN AREA }}</strong
+          >!
+        </p>
+
+        <div class="columns">
+          <div class="column">1</div>
+          <div class="column">2</div>
+          <div class="column">3</div>
+          <div class="column">4</div>
+          <div class="column">5</div>
+        </div>
+      </div>
+    </section>
+  </body>
 </html>

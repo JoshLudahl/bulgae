@@ -21,6 +21,10 @@ body {
     font-family: 'Quicksand', sans-serif;
     font-size: 3em;
 }
+.brand a {
+    text-decoration: none;
+    color: #333333;
+}
 
 .login {
     margin: 20px auto;
