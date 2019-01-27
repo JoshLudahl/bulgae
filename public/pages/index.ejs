@@ -21,61 +21,62 @@
 
 <body>
 
-  <section class="hero is-large is-fullheight">
-    <div class="hero-head">
-      <nav class="navbar">
-        <div class="container">
-          <div class="navbar-brand">
-            <a class="navbar-item">
-              Bulgae
+
+  <div class="hero-head">
+    <nav class="navbar is-fixed-top">
+      <div class="container is-white">
+        <div class="navbar-brand">
+          <a class="navbar-item">
+            <img src="/static/assets/logo.png" alt="Bulgae" class="svglogok"> Bulgae
+          </a>
+          <span class="navbar-burger burger" data-target="navbarMenuHeroB">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </div>
+        <div id="navbarMenuHeroB" class="navbar-menu">
+          <div class="navbar-end">
+            <a href="#" class="navbar-item is-active">
+              Home
             </a>
-            <span class="navbar-burger burger" data-target="navbarMenuHeroB">
-              <span></span>
-              <span></span>
-              <span></span>
+            <a href="#benefits" class="navbar-item">
+              Benefits
+            </a>
+            <a href="#about" class="navbar-item">
+              About
+            </a>
+            <a href="#contact" class="navbar-item">
+              Contact
+            </a>
+            <span class="navbar-item">
+              <a href="/users/login" class="button is-primary">
+                <span class="icon">
+                  <i class="fas fa-sign-in-alt"></i>
+                </span>
+                <span class="has-text-white">Sign-in</span>
+              </a>
             </span>
-          </div>
-          <div id="navbarMenuHeroB" class="navbar-menu">
-            <div class="navbar-end">
-              <a class="navbar-item is-active">
-                Home
-              </a>
-              <a href="#about" class="navbar-item">
-                Benefits
-              </a>
-              <a class="navbar-item">
-                About
-              </a>
-              <a class="navbar-item">
-                Contact
-              </a>
-              <span class="navbar-item">
-                <a href="/users/login" class="button is-info">
-                  <span class="icon">
-                    <i class="fas fa-sign-in-alt"></i>
-                  </span>
-                  <span>Sign-in</span>
-                </a>
-              </span>
-              <a class="navbar-item">
-                Sign-up
-              </a>
-            </div>
+            <a class="navbar-item">
+              Sign-up
+            </a>
+            <a href="https://twitter.com/BulgaeBudgets" target="_blank" class="navbar-item"><i class="fab fa-twitter"></i></a>
           </div>
         </div>
-      </nav>
-    </div>
-
+      </div>
+    </nav>
+  </div>
+  <section id="home" class="hero is-primary is-fullheight">
     <div class="hero-body is-white">
       <div class="container has-text-centered">
         <div class="text">
           <p class="collective">Budgets are</p>
           <p class="collective">
-            <span class="word wisteria">smart.</span>
-            <span class="word belize">wonderful.</span>
-            <span class="word pomegranate">easy.</span>
-            <span class="word green">useful.</span>
-            <span class="word midnight">empowering.</span>
+            <span class="word prime">smart.</span>
+            <span class="word prime">wonderful.</span>
+            <span class="word prime">easy.</span>
+            <span class="word prime">useful.</span>
+            <span class="word prime">empowering.</span>
           </p>
         </div>
       </div>
@@ -84,65 +85,124 @@
   </section>
 
 
-  <section class="hero is-info is-fullheight">
+  <section id="about" class="hero is-primary is-fullheight">
     <div class="hero-body">
+
+
+
       <div class="container">
-        <h1 class="title">Benefits</h1>
+        <h1 class="has-text-centered"><img src="/static/assets/logo.png" alt="Bulgae" class="svglogo"></h1>
+        <h1 class="title">What's this all about?</h1>
         <h2 class="subtitle">
-          A simple container to divide your page into <strong>sections</strong>, like the one you're currently reading
-        </h2>
+          Bulgae was started to help you manage your money and see exactly where your money is going!
+          Bulgae is a budgeting utility to help you visually see how you are spending your money.</h2>
+        <a href="/users/register" class="button is-medium is-outlined">Get Started now</a>
+
       </div>
+    </div>
   </section>
 
-  <section class="hero is-white is-fullheight">
+  <section id="benefits" class="hero is-white is-fullheight has-text-primary">
     <div class="hero-body">
       <div class="container">
-        <h1 class="title">About</h1>
-        <h2 class="subtitle">
-          A simple container to divide your page into <strong>sections</strong>, like the one you're currently reading
-        </h2>
+        <h1 class="title has-text-centered drop">Benefits</h1>
+
         <div class="columns is-vcentered is-centered has-text-centered">
           <div class="column is-one-third larger">
-            <span class="fa-stack" style="vertical-align: top;">
+            <span class="fa-stack">
               <i class="far fa-circle fa-stack-2x"></i>
-              <i class="fas fa-flag fa-stack-1x"></i>
+              <i class="fas fa-brain fa-stack-1x"></i>
             </span>
-          </div>
-          <div class="column splash-blue ">
-            <span class="fa-stack larger" style="vertical-align: top;">
-              <i class="far fa-circle fa-stack-2x"></i>
-              <i class="fas fa-flag fa-stack-1x"></i>
-            </span><br>
-            <h1 class="title is-3">Title 1</h1>
-            <h1 class="subtitle is-5">Subtitle 1</h1>
+
+            <h1 class="title is-3">Peace of Mind</h1>
+            <h1 class="subtitle is-5">When you budget properly, you can have peace-of-mind knowing you're making the
+              most of your money.</h1>
 
           </div>
           <div class="column larger">
-            <span class="fa-stack" style="vertical-align: top;">
+            <span class="fa-stack">
               <i class="far fa-circle fa-stack-2x"></i>
-              <i class="fas fa-flag fa-stack-1x"></i>
+              <i class="fas fa-hand-holding-usd fa-stack-1x"></i>
             </span>
+            <h1 class="title is-3">Save Money</h1>
+            <h1 class="subtitle is-5">When stick to your budget, you can save a lot of money because you know where
+              your money is going.</h1>
+
+          </div>
+          <div class="column larger">
+            <span class="fa-stack">
+              <i class="far fa-circle fa-stack-2x"></i>
+              <i class="far fa-calendar-alt fa-stack-1x"></i>
+            </span>
+
+            <h1 class="title is-3">Planning</h1>
+            <h1 class="subtitle is-5">When you know where your money is going, you can better plan for things like
+              vacations or owning a home.</h1>
+
           </div>
         </div>
 
 
       </div>
+    </div>
   </section>
 
-  <section class="hero is-info is-fullheight">
+  <section id="contact" class="hero is-primary is-fullheight">
     <div class="hero-body">
       <div class="container">
-        <h1 class="title">Contact</h1>
-        <h2 class="subtitle">
-          A simple container to divide your page into <strong>sections</strong>, like the one you're currently reading
-        </h2>
+        <h1 class="title has-text-centered">Contact</h1>
+
+        <div class="columns">
+          <div class="column is-6 is-offset-3">
+            <div class="box">
+              <form>
+                <div class="field">
+                  <label class="label">Name</label>
+                  <div class="control">
+                    <input class="input" type="text" placeholder="What is your name?" required>
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label class="label">Email</label>
+                  <div class="control has-icons-left">
+                    <input class="input" type="email" placeholder="Email Address" value="" required>
+                    <span class="icon is-small is-left">
+                      <i class="fas fa-envelope"></i>
+                    </span>
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label class="label">Message</label>
+                  <div class="control">
+                    <textarea class="textarea" placeholder="Oh, hey there..." required></textarea>
+                  </div>
+                </div>
+
+                <div class="field is-grouped has-text-centered">
+                  <div class="control">
+                    <button class="button is-primary is-large" type="submit"><span class="icon">
+                        <i class="fas fa-envelope"></i>
+                      </span>
+                      <span>Submit</span></button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+
       </div>
+    </div>
   </section>
 
   <footer class="footer">
     <div class="content has-text-centered">
       <p>
-        <strong>Bulgae</strong> by <a href="http://ludahl.com">Josh Ludahl</a>. Made with <i class="fas fa-beer"></i>
+        <strong>Bulgae</strong> by <a class="has-text-primary" href="http://ludahl.com">Josh Ludahl</a>. Made with <i
+          class="fas fa-beer"></i>
         and <i class="fas fa-coffee"></i>.
       </p>
     </div>
@@ -150,8 +210,8 @@
 
 
   <!-- Scripts -->
-  <script type="text/javascript" src="static/javascript/fancyfont.js"></script>
-  <script type="text/javascript" src="static/javascript/bulma.js"></script>
+  <script src="static/javascript/fancyfont.js"></script>
+  <script src="static/javascript/bulma.js"></script>
 
 </body>
 

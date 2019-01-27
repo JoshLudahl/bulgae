@@ -1,9 +1,13 @@
-
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
 /*
 *
 *   Landing page
 *
 */
+
+* {
+    font-family: 'Quicksand', sans-serif;
+}
 .splash-blue {
     color: #333333;
     background-color: #33ccff;
@@ -13,8 +17,27 @@
     background-color: #fff;
 }
 
+.is-purp {
+    color: #333333;
+    background-color: #8E4EC0;
+}
+
 .larger {
     font-size: 80px;
+}
+.drop {
+    font-size: 6rem;
+    padding-bottom: 25px;
+}
+.svglogo {
+
+    width: 300px;
+    height: 300px;
+    opacity: .65;
+}
+
+.navbar a:hover {
+    color:#00D1B2;
 }
 
 
