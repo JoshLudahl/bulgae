@@ -5,8 +5,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0" />
 
+  <!-- Bulma - CSS Framework -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
 
+  <!-- Custom CSS -->
   <link rel="stylesheet" href="/static/styles/login.css">
 
   <title>Bulgae - Please Login</title>
@@ -15,81 +17,84 @@
 
 <body>
 
-  <!-- Login Section -->
+
   <body>
-      <nav class="navbar is-fixed-top">
-          <div class="container is-white">
-            <div class="navbar-brand">
-              <a class="navbar-item">
-                <img src="/static/assets/logo.png" alt="Bulgae" class="svglogok"> Bulgae
-              </a>
-              <span class="navbar-burger burger" data-target="navbarMenuHeroB">
-                <span></span>
-                <span></span>
-                <span></span>
-              </span>
-            </div>
-            <div id="navbarMenuHeroB" class="navbar-menu">
-              <div class="navbar-end">
-                <a href="/" class="navbar-item is-active">
-                  Home
-                </a>
+    <!-- Navigation -->
+    <nav class="navbar is-fixed-top">
+      <div class="container is-white">
+        <div class="navbar-brand">
+          <a class="navbar-item">
+            <img src="/static/assets/logo.png" alt="Bulgae" class="svglogok"> Bulgae
+          </a>
+          <span class="navbar-burger burger" data-target="navbarMenuHeroB">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </div>
+        <div id="navbarMenuHeroB" class="navbar-menu">
+          <div class="navbar-end">
+            <a href="/" class="navbar-item is-active">
+              Home
+            </a>
 
-                <span class="navbar-item">
-                  <a href="/users/login" class="button is-primary">
-                    <span class="icon">
-                      <i class="fas fa-sign-in-alt"></i>
-                    </span>
-                    <span class="has-text-white">Sign-in</span>
-                  </a>
+            <span class="navbar-item">
+              <a href="/users/login" class="button is-primary">
+                <span class="icon">
+                  <i class="fas fa-sign-in-alt"></i>
                 </span>
-                <a href="/users/register"class="navbar-item">
-                  Sign-up
-                </a>
-                <a href="https://twitter.com/BulgaeBudgets" target="_blank" class="navbar-item"><i class="fab fa-twitter"></i></a>
-              </div>
-            </div>
+                <span class="has-text-white">Sign-in</span>
+              </a>
+            </span>
+            <a href="/users/register" class="navbar-item">
+              Sign-up
+            </a>
+            <a href="https://twitter.com/BulgaeBudgets" target="_blank" class="navbar-item"><i class="fab fa-twitter"></i></a>
           </div>
-        </nav>
+        </div>
+      </div>
+    </nav>
+    <!-- END Navigation -->
 
 
 
 
-
-
+    <!-- Login Form -->
     <div class="brand">
       <a href="/">Bulgae</a>
     </div>
 
-      <div class="login">
-        <div class="login-screen">
-          <div class="app-title">
-            <h1>Sign in</h1>
-          </div>
+    <div class="login">
+      <div class="login-screen">
+        <div class="app-title">
+          <h1>Sign in</h1>
+        </div>
 
-          <div class="login-form">
-            <form action="/users/login" method="POST">
+        <div class="login-form">
+          <form action="/users/login" method="POST">
             <div class="control-group">
-            <input name="email" type="text" class="login-field" value="" placeholder="Email" id="login-name" required>
-            <label class="login-field-icon fui-user" for="login-name"></label>
+              <input name="email" type="text" class="login-field" value="" placeholder="Email" id="login-name" required>
+              <label class="login-field-icon fui-user" for="login-name"></label>
             </div>
 
             <div class="control-group">
-            <input name="password" type="password" class="login-field" value="" placeholder="Password" id="login-pass" required>
-            <label class="login-field-icon fui-lock" for="login-pass"></label>
+              <input name="password" type="password" class="login-field" value="" placeholder="Password" id="login-pass"
+                required>
+              <label class="login-field-icon fui-lock" for="login-pass"></label>
             </div>
 
             <button type="submit" class="btn btn-primary btn-large btn-block">Login</button>
             <a class="login-link" href="#">Lost your password?</a>
             <a class="login-link" href="/users/register">Not a member? Sign-up here.</a>
           </form>
-          </div>
         </div>
       </div>
-    </body>
-    <!-- END Login Section -->
+    </div>
+  </body>
+  <!-- END Login Form -->
 
-    <script src="static/javascript/bulma.js"></script>
+  <!-- JS for responsive menu -->
+  <script src="static/javascript/bulma.js"></script>
 
 </body>
 

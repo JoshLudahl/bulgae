@@ -20,52 +20,54 @@
 </head>
 
 <body>
-
-
-  <div class="hero-head">
-    <nav class="navbar is-fixed-top">
-      <div class="container is-white">
-        <div class="navbar-brand">
-          <a class="navbar-item">
-            <img src="/static/assets/logo.png" alt="Bulgae" class="svglogok"> Bulgae
+  <!-- Navigation -->
+  <nav class="navbar is-fixed-top">
+    <div class="container is-white">
+      <div class="navbar-brand">
+        <a class="navbar-item">
+          <img src="/static/assets/logo.png" alt="Bulgae" class="svglogok"> Bulgae
+        </a>
+        <span class="navbar-burger burger" data-target="navbarMenuHeroB">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </div>
+      <div id="navbarMenuHeroB" class="navbar-menu">
+        <div class="navbar-end">
+          <a href="#" class="navbar-item is-active">
+            Home
           </a>
-          <span class="navbar-burger burger" data-target="navbarMenuHeroB">
-            <span></span>
-            <span></span>
-            <span></span>
+          <a href="#benefits" class="navbar-item">
+            Benefits
+          </a>
+          <a href="#about" class="navbar-item">
+            About
+          </a>
+          <a href="#contact" class="navbar-item">
+            Contact
+          </a>
+          <span class="navbar-item">
+            <a href="/users/login" class="button is-primary">
+              <span class="icon">
+                <i class="fas fa-sign-in-alt"></i>
+              </span>
+              <span class="has-text-white">Sign-in</span>
+            </a>
           </span>
-        </div>
-        <div id="navbarMenuHeroB" class="navbar-menu">
-          <div class="navbar-end">
-            <a href="#" class="navbar-item is-active">
-              Home
-            </a>
-            <a href="#benefits" class="navbar-item">
-              Benefits
-            </a>
-            <a href="#about" class="navbar-item">
-              About
-            </a>
-            <a href="#contact" class="navbar-item">
-              Contact
-            </a>
-            <span class="navbar-item">
-              <a href="/users/login" class="button is-primary">
-                <span class="icon">
-                  <i class="fas fa-sign-in-alt"></i>
-                </span>
-                <span class="has-text-white">Sign-in</span>
-              </a>
-            </span>
-            <a href="/users/register"class="navbar-item">
-              Sign-up
-            </a>
-            <a href="https://twitter.com/BulgaeBudgets" target="_blank" class="navbar-item"><i class="fab fa-twitter"></i></a>
-          </div>
+          <a href="/users/register" class="navbar-item">
+            Sign-up
+          </a>
+          <a href="https://twitter.com/BulgaeBudgets" target="_blank" class="navbar-item"><i class="fab fa-twitter"></i></a>
         </div>
       </div>
-    </nav>
-  </div>
+    </div>
+  </nav>
+  <!-- END Navication -->
+
+
+
+  <!-- Main Splash -->
   <section id="home" class="hero is-primary is-fullheight">
     <div class="hero-body is-white">
       <div class="container has-text-centered">
@@ -81,15 +83,12 @@
         </div>
       </div>
     </div>
-
   </section>
+  <!-- END Main Splash -->
 
-
+  <!-- About Section -->
   <section id="about" class="hero is-primary is-fullheight">
     <div class="hero-body">
-
-
-
       <div class="container">
         <h1 class="has-text-centered"><img src="/static/assets/logo.png" alt="Bulgae" class="svglogo"></h1>
         <h1 class="title">What's this all about?</h1>
@@ -101,7 +100,9 @@
       </div>
     </div>
   </section>
+  <!-- END About Section -->
 
+  <!-- Benefits Section -->
   <section id="benefits" class="hero is-white is-fullheight has-text-primary">
     <div class="hero-body">
       <div class="container">
@@ -141,12 +142,12 @@
 
           </div>
         </div>
-
-
       </div>
     </div>
   </section>
+  <!-- END Benefits -->
 
+  <!-- Contact Section -->
   <section id="contact" class="hero is-primary is-fullheight">
     <div class="hero-body">
       <div class="container">
@@ -192,12 +193,12 @@
             </div>
           </div>
         </div>
-
-
       </div>
     </div>
   </section>
+  <!-- END Contact Section -->
 
+  <!-- Footer -->
   <footer class="footer">
     <div class="content has-text-centered">
       <p>
@@ -207,6 +208,7 @@
       </p>
     </div>
   </footer>
+  <!-- END Footer -->
 
 
   <!-- Scripts -->
