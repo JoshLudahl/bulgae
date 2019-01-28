@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0" />
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
 
   <link rel="stylesheet" href="/static/styles/login.css">
 
@@ -16,6 +17,46 @@
 
   <!-- Login Section -->
   <body>
+      <nav class="navbar is-fixed-top">
+          <div class="container is-white">
+            <div class="navbar-brand">
+              <a class="navbar-item">
+                <img src="/static/assets/logo.png" alt="Bulgae" class="svglogok"> Bulgae
+              </a>
+              <span class="navbar-burger burger" data-target="navbarMenuHeroB">
+                <span></span>
+                <span></span>
+                <span></span>
+              </span>
+            </div>
+            <div id="navbarMenuHeroB" class="navbar-menu">
+              <div class="navbar-end">
+                <a href="/" class="navbar-item is-active">
+                  Home
+                </a>
+
+                <span class="navbar-item">
+                  <a href="/users/login" class="button is-primary">
+                    <span class="icon">
+                      <i class="fas fa-sign-in-alt"></i>
+                    </span>
+                    <span class="has-text-white">Sign-in</span>
+                  </a>
+                </span>
+                <a href="/users/register"class="navbar-item">
+                  Sign-up
+                </a>
+                <a href="https://twitter.com/BulgaeBudgets" target="_blank" class="navbar-item"><i class="fab fa-twitter"></i></a>
+              </div>
+            </div>
+          </div>
+        </nav>
+
+
+
+
+
+
     <div class="brand">
       <a href="/">Bulgae</a>
     </div>
@@ -47,6 +88,9 @@
       </div>
     </body>
     <!-- END Login Section -->
+
+    <script src="static/javascript/bulma.js"></script>
+
 </body>
 
 </html>
