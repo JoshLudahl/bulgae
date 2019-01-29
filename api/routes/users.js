@@ -61,8 +61,6 @@ router.get('/logout', (req, res, next) => {
 //////////    POTENTIAL ERROR BELOW /////////////////////
 /////////////////////////////////////////////////////////
 
-
-
 //  Get ONE user
 router.get("/:user", (req, res, next) => {
   const userId = req.params.user;
