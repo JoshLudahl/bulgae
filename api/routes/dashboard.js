@@ -1,3 +1,9 @@
+/*
+ *
+ *   TO be used for Budget Based Ops
+ *
+ */
+
 const express = require('express');
 const router = express.Router();
 const Budget = require('../models/budget');
@@ -8,10 +14,16 @@ router.get('/', async (req, res, next) => {
     const user = req.session.userId;
     //  Find by user
     try {
-        const result = await Budget.find({owner:user});
-        res.status(200).json({result});
+        const result = await Budget.find({
+            owner: user
+        });
+        res.status(200).json({
+            result
+        });
     } catch (error) {
-        res.status(404).json({message: 'Error'});
+        res.status(404).json({
+            message: 'Error'
+        });
     }
     //  Only give back budget items per the user
 
@@ -108,7 +120,7 @@ router.delete('/:id', async (req, res, next) => {
     try {
 
         const budgetItem = await Budget.findByIdAndRemove({
-            owner:user,
+            owner: user,
             _id: req.params.id
         });
         res.status(200).json({

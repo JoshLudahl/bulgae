@@ -11,15 +11,30 @@ const bcrypt = require("bcryptjs");
 
 //  Default to load login
 router.get('/', (req, res, next) => {
-  res.render('user/login');
+  //  See if the user is already logged in
+  if (req.session && req.session.userId) {
+    res.redirect('../dashboard');
+  } else {
+    res.render('user/login');
+  }
 });
 // GET Login
 router.get('/login', (req, res, next) => {
-  res.render('user/login');
+  //  See if the user is already logged in
+  if (req.session && req.session.userId) {
+    res.redirect('../dashboard');
+  } else {
+    res.render('user/login');
+  }
 });
 //  Get Register page
 router.get('/register', (req, res, next) => {
-  res.render('user/register');
+  //  See if the user is already logged in
+  if (req.session && req.session.userId) {
+    res.redirect('../dashboard');
+  } else {
+    res.render('user/register');
+  }
 });
 
 //  Get ALL users
@@ -35,6 +50,18 @@ router.get("/users", (req, res, next) => {
       });
     });
 });
+
+//  Logout
+router.get('/logout', (req, res, next) => {
+  req.session.reset();
+  res.redirect('../users/login');
+});
+
+/////////////////////////////////////////////////////////
+//////////    POTENTIAL ERROR BELOW /////////////////////
+/////////////////////////////////////////////////////////
+
+
 
 //  Get ONE user
 router.get("/:user", (req, res, next) => {
@@ -112,8 +139,11 @@ router.post("/", (req, res, next) => {
     });
 });
 
+
+
 //  POST Login
 router.post("/login", (req, res, next) => {
+
   User.find({
       email: req.body.email
     })
@@ -132,27 +162,11 @@ router.post("/login", (req, res, next) => {
         }
 
         if (result) {
-          //  Uncomment if implementing JWT
-          // const token = jwt.sign({
-          //     email: user[0].email,
-          //     userId: user[0]._id
-          //   },
-          //   settings.JWT_KEY, {
-          //     expiresIn: "1h"
-          //   }
-          // );
-
           //  Add userId to the session variable
           req.session.userId = user[0]._id;
 
           if (req.session) console.log(req.session);
-          res.redirect('/admin');
-
-          //  Uncomment if implementing JWT
-          // return res.status(200).json({
-          //   message: "Authorization Successful",
-          //   token: token
-          // });
+          res.redirect('/dashboard');
         } else {
           res.status(401).json({
             message: "Authorization Failed(3)."
@@ -167,6 +181,8 @@ router.post("/login", (req, res, next) => {
       });
     });
 });
+
+
 
 //  UPDATE one user
 router.patch('/:id', async (req, res, next) => {
