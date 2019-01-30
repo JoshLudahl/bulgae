@@ -17,8 +17,8 @@ router.get('/', async (req, res, next) => {
         const result = await Budget.find({
             owner: user
         });
-        res.status(200).json({
-            result
+        res.render('admin/index', {
+            user: req.session.email
         });
     } catch (error) {
         res.status(404).json({

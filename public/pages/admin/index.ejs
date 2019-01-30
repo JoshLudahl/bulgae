@@ -1,40 +1,292 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{{ Welcome }}</title>
-    <!-- Bulma - https://bulma.io/  -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css"
-    />
-    <!-- Font Awesome - https://fontawesome.com -->
-    <script
-      defer
-      src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
-    ></script>
+<!doctype html>
+<html lang="en">
 
-    <!-- Custom Styles -->
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  </head>
-  <body>
-    <section class="section">
-      <div class="container">
-        <h1 class="title">Welcome, {{ USERNAME }}</h1>
-        <p class="subtitle">
-          My first website with <strong>{{ ADMIN AREA }}</strong
-          >!
-        </p>
+  <!-- production version, optimized for size and speed -->
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 
-        <div class="columns">
-          <div class="column">1</div>
-          <div class="column">2</div>
-          <div class="column">3</div>
-          <div class="column">4</div>
-          <div class="column">5</div>
+  <!-- Bulma - https://bulma.io/  -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
+
+  <!-- Font Awesome - https://fontawesome.com -->
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/static/styles/styles.css">
+  <link rel="stylesheet" href="/static/styles/user-admin.css">
+
+  <title>Bulgae - Budgeting is fun!</title>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="navbar is-fixed-top">
+    <div class="container is-white">
+      <div class="navbar-brand">
+        <a href="/" class="navbar-item">
+          <img src="/static/assets/logo.png" alt="Bulgae" class="svglogok"> Bulgae
+        </a>
+        <span class="navbar-burger burger" data-target="navbarMenuHeroB">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </div>
+      <div id="navbarMenuHeroB" class="navbar-menu">
+        <div class="navbar-end">
+
+          <span class="navbar-item">
+            <a href="/users/logout" class="button is-primary">
+              <span class="icon">
+                <i class="fas fa-sign-out-alt"></i>
+              </span>
+              <span class="has-text-white">Sign-out</span>
+            </a>
+          </span>
+
+          <a href="https://twitter.com/BulgaeBudgets" target="_blank" class="navbar-item"><i class="fab fa-twitter"></i></a>
         </div>
       </div>
-    </section>
-  </body>
+    </div>
+  </nav>
+  <!-- END Navication -->
+
+  <!-- Main Section -->
+  <div class="container is-fluid push" id="app">
+    <div class="columns">
+      <div class="column">
+        <aside class="menu is-hidden-mobile">
+          <p class="menu-label">
+            General
+          </p>
+          <ul class="menu-list">
+            <li><a class="is-active">Dashboard</a></li>
+            <li><a>Customers</a></li>
+          </ul>
+          <p class="menu-label">
+            Administration
+          </p>
+          <ul class="menu-list">
+            <li><a>Team Settings</a></li>
+            <li>
+              <a>Manage Your Team</a>
+              <ul>
+                <li><a>Members</a></li>
+                <li><a>Plugins</a></li>
+                <li><a>Add a member</a></li>
+              </ul>
+            </li>
+            <li><a>Invitations</a></li>
+            <li><a>Cloud Storage Environment Settings</a></li>
+            <li><a>Authentication</a></li>
+          </ul>
+          <p class="menu-label">
+            Account
+          </p>
+          <ul class="menu-list">
+            <li><a>Personal Details</a></li>
+            <li><a>Settings</a></li>
+            <li><a href="/users/logout">Logout</a></li>
+          </ul>
+        </aside>
+      </div>
+      <div class="column is-9">
+
+        <section class="hero is-primary welcome is-small">
+          <div class="hero-body">
+            <div class="container">
+              <h1 class="title">
+                {{ message }} <%= user %>
+              </h1>
+              <h2 class="subtitle">
+                I hope you are having a great day!
+              </h2>
+            </div>
+          </div>
+        </section>
+        <section class="info-tiles">
+          <div class="tile is-ancestor has-text-centered">
+            <div class="tile is-parent">
+              <article class="tile is-child box">
+                <p class="title">$439</p>
+                <p class="subtitle">Net Income</p>
+              </article>
+            </div>
+            <div class="tile is-parent">
+              <article class="tile is-child box">
+                <p class="title">$1200</p>
+                <p class="subtitle">Expense</p>
+              </article>
+            </div>
+            <div class="tile is-parent">
+              <article class="tile is-child box">
+                <p class="title">$1500</p>
+                <p class="subtitle">Income</p>
+              </article>
+            </div>
+
+          </div>
+        </section>
+        <div class="columns">
+          <div class="column is-6">
+            <div class="card events-card">
+              <header class="card-header">
+                <p class="card-header-title">
+                  Expenses
+                </p>
+                <a href="#" class="card-header-icon" aria-label="more options">
+                  <span class="icon">
+                    <i class="fa fa-plus add" aria-hidden="true"></i>
+                  </span>
+                </a>
+              </header>
+              <div class="card-table">
+                <div class="content">
+                  <table class="table is-fullwidth is-striped">
+                    <thead>
+                      <th></th>
+                      <th>date</th>
+                      <th>name</th>
+                      <th>category</th>
+                      <th>amount</th>
+                      <th>edit</th>
+
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td width="5%"><i class="fas fa-bell"></i></td>
+                        <td>2/15/19</td>
+                        <td>Hoa</td>
+                        <td>Housing</td>
+                        <td>$369</td>
+                        <td><a class="button is-small" href="#"><i class="fas fa-pencil-alt"></i></a></td>
+                      </tr>
+                      <tr>
+                        <td width="5%"><i class="fa fa-bell"></i></td>
+                        <td>2/15/19</td>
+                        <td>Electricity</td>
+                        <td>Housing</td>
+                        <td>$369</td>
+                        <td><a class="button is-small" href="#"><i class="fas fa-pencil-alt"></i></a></td>
+                      </tr>
+                      <tr>
+                        <td width="5%"><i class="fa fa-bell"></i></td>
+                        <td>2/15/19</td>
+                        <td>Pet Food</td>
+                        <td>Pet</td>
+                        <td>$369</td>
+                        <td><a class="button is-small" href="#"><i class="fas fa-pencil-alt"></i></a></td>
+                      </tr>
+                      <tr>
+                        <td width="5%"><i class="fa fa-bell"></i></td>
+                        <td>2/15/19</td>
+                        <td>Gas</td>
+                        <td>Transportation</td>
+                        <td>$369</td>
+                        <td><a class="button is-small" href="#"><i class="fas fa-pencil-alt"></i></a></td>
+                      </tr>
+                      <tr>
+                        <td width="5%"><i class="fa fa-bell"></i></td>
+                        <td>2/15/19</td>
+                        <td>Hoa</td>
+                        <td>Housing</td>
+                        <td>$369</td>
+                        <td><a class="button is-small" href="#"><i class="fas fa-pencil-alt"></i></a></td>
+                      </tr>
+                      <tr>
+                        <td width="5%"><i class="fa fa-bell"></i></td>
+                        <td>2/15/19</td>
+                        <td>Hoa</td>
+                        <td>Housing</td>
+                        <td>$369</td>
+                        <td><a class="button is-small" href="#"><i class="fas fa-pencil-alt"></i></a></td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                </div>
+              </div>
+              <footer class="card-footer">
+                <a href="#" class="card-footer-item">View All</a>
+              </footer>
+            </div>
+          </div>
+          <div class="column is-6">
+            <div class="card">
+              <header class="card-header">
+                <p class="card-header-title">
+                  Expense Item
+                </p>
+                <a href="#" class="card-header-icon" aria-label="more options">
+                  <i class="fa fa-plus add"></i>
+                </a>
+              </header>
+              <div class="card-content">
+                <div class="content">
+                  <div class="control has-icons-left has-icons-right">
+                    <input class="input is-large" type="text" placeholder="">
+                    <span class="icon is-medium is-left">
+                      <i class="fa fa-plus"></i>
+                    </span>
+                    <span class="icon is-medium is-right">
+                      <i class="fa fa-check"></i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <header class="card-header">
+                <p class="card-header-title">
+                  Income Item
+                </p>
+                <a href="#" class="card-header-icon" aria-label="more options">
+                  <i class="fa fa-plus add"></i>
+                </a>
+              </header>
+              <div class="card-content">
+                <div class="content">
+                  <div class="control has-icons-left has-icons-right">
+                    <input class="input is-large" type="text" placeholder="">
+                    <span class="icon is-medium is-left">
+                      <i class="fa fa-plus"></i>
+                    </span>
+                    <span class="icon is-medium is-right">
+                      <i class="fa fa-check"></i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- END Main Section -->
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+        <strong>Bulgae</strong> by <a class="has-text-primary" href="http://ludahl.com">Josh Ludahl</a>. Made with <i
+          class="fas fa-beer"></i>
+        and <i class="fas fa-coffee"></i>.
+      </p>
+    </div>
+  </footer>
+  <!-- END Footer -->
+
+
+  <!-- Scripts -->
+  <script src="/static/javascript/vue-app.js"></script>
+  <script src="static/javascript/fancyfont.js"></script>
+  <script src="static/javascript/bulma.js"></script>
+
+</body>
+
 </html>

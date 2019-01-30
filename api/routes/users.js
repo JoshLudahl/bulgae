@@ -1,13 +1,9 @@
 const express = require("express");
 const router = express.Router();
-//  const settings = require('../../settings');
 const mongoose = require("mongoose");
 const User = require("../models/user");
-//  const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
-//  const jwt_check = require("../middleware/jwt_authorize");
-//  Uncomment and use auth for securing an additional route
-//  const auth = require('../middleware/user_check')
+
 
 //  Default to load login
 router.get('/', (req, res, next) => {
@@ -18,6 +14,7 @@ router.get('/', (req, res, next) => {
     res.render('user/login');
   }
 });
+
 // GET Login
 router.get('/login', (req, res, next) => {
   //  See if the user is already logged in
@@ -162,6 +159,7 @@ router.post("/login", (req, res, next) => {
         if (result) {
           //  Add userId to the session variable
           req.session.userId = user[0]._id;
+          req.session.email = user[0].email;
 
           if (req.session) console.log(req.session);
           res.redirect('/dashboard');
