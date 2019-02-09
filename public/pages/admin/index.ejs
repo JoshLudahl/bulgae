@@ -109,19 +109,21 @@
           <div class="tile is-ancestor has-text-centered">
             <div class="tile is-parent">
               <article class="tile is-child box">
-                <p class="title">$439</p>
+                <p class="title">$<%= income - expense %></p>
                 <p class="subtitle">Net Income</p>
               </article>
             </div>
             <div class="tile is-parent">
               <article class="tile is-child box">
-                <p class="title">$1200</p>
-                <p class="subtitle">Expense</p>
+                <p class="title">$<%= expense %></p>
+                <p class="subtitle">Expenses</p>
               </article>
             </div>
             <div class="tile is-parent">
               <article class="tile is-child box">
-                <p class="title">$1500</p>
+                <p class="title">
+                  $<%= income %>
+                </p>
                 <p class="subtitle">Income</p>
               </article>
             </div>
@@ -269,11 +271,13 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="content has-text-centered">
-      <p>
+      <p id="test">
         <strong>Bulgae</strong> by <a class="has-text-primary" href="http://ludahl.com">Josh Ludahl</a>. Made with <i
           class="fas fa-beer"></i>
         and <i class="fas fa-coffee"></i>.
       </p>
+
+
     </div>
   </footer>
   <!-- END Footer -->
@@ -281,7 +285,6 @@
 
   <!-- Scripts -->
   <script src="/static/javascript/vue-app.js"></script>
-  <script src="static/javascript/fancyfont.js"></script>
   <script src="static/javascript/bulma.js"></script>
 
 </body>

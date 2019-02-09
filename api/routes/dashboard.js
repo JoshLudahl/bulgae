@@ -17,8 +17,24 @@ router.get('/', async (req, res, next) => {
         const result = await Budget.find({
             owner: user
         });
+        let expense = 0;
+        let income = 0;
+        result.forEach(item => {
+            if(item.expense){
+                expense += item.amount;
+            }
+            else {
+                income += item.amount;
+            }
+        });
+        console.log("Income " + income + "; expenses " + expense);
+
+
         res.render('admin/index', {
-            user: req.session.email
+            user: req.session.email,
+            result,
+            income,
+            expense
         });
     } catch (error) {
         res.status(404).json({

@@ -7,7 +7,8 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const sessions = require('client-sessions');
-const auth = require('./api/middleware/user_check')
+const auth = require('./api/middleware/login_check')
+const auth2 = require('./api/middleware/user_mw');
 
 //  DB
 const connectionURL ='mongodb://' + settings.MONGO_USER + ':' + settings.MONGO_PW + settings.MONGO_URI;
@@ -50,6 +51,8 @@ app.use(sessions({
       overwrite: true
     }
 }));
+
+app.use(auth2);
 
 //  ROUTES
 //  Landing Route
