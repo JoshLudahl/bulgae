@@ -78,3 +78,15 @@ html, body {
   .push {
       margin-top: 70px;
   }
+  .inputpad {
+    margin-bottom: 20px;
+  }
+  .inputpad-plus {
+    margin-bottom: 20px;
+  }
+  .modal-card-head-background-color {
+    background-color: #00D1B2;
+  }
+  .modal-card-title {
+    color: #ffffff;
+  }

@@ -21,9 +21,11 @@ router.get('/login', (req, res, next) => {
   if (req.session && req.session.userId) {
     res.redirect('../dashboard');
   } else {
+
     res.render('user/login');
   }
 });
+
 //  Get Register page
 router.get('/register', (req, res, next) => {
   //  See if the user is already logged in
@@ -160,8 +162,6 @@ router.post("/login", (req, res, next) => {
           //  Add userId to the session variable
           req.session.userId = user[0]._id;
           req.session.email = user[0].email;
-
-          if (req.session) console.log(req.session);
           res.redirect('/dashboard');
         } else {
           res.status(401).json({

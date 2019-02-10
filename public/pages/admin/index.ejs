@@ -56,7 +56,62 @@
   <!-- END Navication -->
 
   <!-- Main Section -->
-  <div class="container is-fluid push" id="app">
+  <div class="container is-fluid push" id="show-modal">
+    <!-- MODAL -->
+    <div class="modal" v-bind:class="{'is-active':isActive}">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head modal-card-head-background-color">
+          <p class="modal-card-title has-text-weight-bold">Create New Budget Item</p>
+          <button @click="close" class="delete" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+          <!-- Content ... -->
+          <div class="field">
+            <form id="new_item">
+              <h6 class="subtitle is-6"><span class="tag is normal"> All fields are required</span></h6>
+              <div class="control">
+                <input class="input is-large inputpad" type="text" name="name" placeholder="Name" required>
+                <input class="input is-large inputpad" type="text" name="category" placeholder="Category" required>
+                <input class="input is-large inputpad" type="text" name="amount" placeholder="Amount" required>
+                <input class="input is-large inputpad" type="text" name="description" placeholder="Description" required>
+              </div>
+              <div class="field inputpad-plus">
+                  <p class="control has-icons-left">
+                    <span class="select is-medium is-primary">
+                      <select>
+                        <option selected name="expense">Expense</option>
+                        <option name="income">Income</option>
+                      </select>
+                    </span>
+                  </p>
+
+
+
+                </div>
+              </form>
+            </div>
+        </section>
+        <footer class="modal-card-foot modal-card-head-background-color">
+
+          <a href="javascript:{}" onclick="document.getElementById('new_item').submit();" class="button is-primary is-inverted">
+              <span class="icon is-small">
+                <i class="fas fa-check"></i>
+              </span>
+              <span>Save</span>
+            </a>
+            <a class="button is-danger is-inverted">
+                <span class="icon is-small" @click="close">
+                  <i class="fas fa-times" @click="close"></i>
+                </span>
+                <span @click="close">Cancel</span>
+              </a>
+
+        </footer>
+      </div>
+    </div>
+    <!-- END MODAL -->
+
     <div class="columns">
       <div class="column">
         <aside class="menu">
@@ -75,8 +130,8 @@
             <li>
               <a>Manage Your Budget</a>
               <ul>
-                <li><a>Add Expense</a></li>
-                <li><a>Add Income</a></li>
+                <li><a v-on:click="expense">Add Expense</a></li>
+                <li><a v-on:click="expense">Add Income</a></li>
               </ul>
             </li>
 
@@ -97,7 +152,8 @@
           <div class="hero-body">
             <div class="container">
               <h1 class="title">
-                {{ message }} <%= user %>
+                {{ message }}
+                <%= user %>
               </h1>
               <h2 class="subtitle">
                 I hope you are having a great day!
@@ -109,20 +165,25 @@
           <div class="tile is-ancestor has-text-centered">
             <div class="tile is-parent">
               <article class="tile is-child box">
-                <p class="title">$<%= income - expense %></p>
+                <p class="title">$
+                  <%= income - expense %>
+                </p>
                 <p class="subtitle">Net Income</p>
               </article>
             </div>
             <div class="tile is-parent">
               <article class="tile is-child box">
-                <p class="title">$<%= expense %></p>
+                <p class="title">$
+                  <%= expense %>
+                </p>
                 <p class="subtitle">Expenses</p>
               </article>
             </div>
             <div class="tile is-parent">
               <article class="tile is-child box">
                 <p class="title">
-                  $<%= income %>
+                  $
+                  <%= income %>
                 </p>
                 <p class="subtitle">Income</p>
               </article>
@@ -131,15 +192,15 @@
           </div>
         </section>
         <div class="columns">
-          <div class="column is-6">
+          <div id="launch-modal-expense" class="column is-6">
             <div class="card events-card">
               <header class="card-header">
                 <p class="card-header-title">
                   Expenses
                 </p>
                 <a href="#" class="card-header-icon" aria-label="more options">
-                  <span class="icon">
-                    <i class="fa fa-plus add" aria-hidden="true"></i>
+                  <span class="icon" v-on:click="expense" alt="add expense">
+                    <i class="fa fa-plus add" alt="Add Expense" aria-hidden="true"></i>
                   </span>
                 </a>
               </header>
@@ -156,54 +217,26 @@
 
                     </thead>
                     <tbody>
+                      <% result.forEach(function(item){
+                        if (item.expense) {
+                        %>
+
                       <tr>
                         <td width="5%"><i class="fas fa-bell"></i></td>
                         <td>2/15/19</td>
-                        <td>Hoa</td>
-                        <td>Housing</td>
-                        <td>$369</td>
+                        <td>
+                          <%= item.name %>
+                        </td>
+                        <td>
+                          <%= item.category %>
+                        </td>
+                        <td>$
+                          <%= item.amount %>
+                        </td>
                         <td><a class="button is-small" href="#"><i class="fas fa-pencil-alt"></i></a></td>
                       </tr>
-                      <tr>
-                        <td width="5%"><i class="fa fa-bell"></i></td>
-                        <td>2/15/19</td>
-                        <td>Electricity</td>
-                        <td>Housing</td>
-                        <td>$369</td>
-                        <td><a class="button is-small" href="#"><i class="fas fa-pencil-alt"></i></a></td>
-                      </tr>
-                      <tr>
-                        <td width="5%"><i class="fa fa-bell"></i></td>
-                        <td>2/15/19</td>
-                        <td>Pet Food</td>
-                        <td>Pet</td>
-                        <td>$369</td>
-                        <td><a class="button is-small" href="#"><i class="fas fa-pencil-alt"></i></a></td>
-                      </tr>
-                      <tr>
-                        <td width="5%"><i class="fa fa-bell"></i></td>
-                        <td>2/15/19</td>
-                        <td>Gas</td>
-                        <td>Transportation</td>
-                        <td>$369</td>
-                        <td><a class="button is-small" href="#"><i class="fas fa-pencil-alt"></i></a></td>
-                      </tr>
-                      <tr>
-                        <td width="5%"><i class="fa fa-bell"></i></td>
-                        <td>2/15/19</td>
-                        <td>Hoa</td>
-                        <td>Housing</td>
-                        <td>$369</td>
-                        <td><a class="button is-small" href="#"><i class="fas fa-pencil-alt"></i></a></td>
-                      </tr>
-                      <tr>
-                        <td width="5%"><i class="fa fa-bell"></i></td>
-                        <td>2/15/19</td>
-                        <td>Hoa</td>
-                        <td>Housing</td>
-                        <td>$369</td>
-                        <td><a class="button is-small" href="#"><i class="fas fa-pencil-alt"></i></a></td>
-                      </tr>
+                      <% } }); %>
+
                     </tbody>
                   </table>
 
@@ -215,63 +248,76 @@
             </div>
           </div>
           <div class="column is-6">
-            <div class="card">
+            <div class="card events-card">
               <header class="card-header">
                 <p class="card-header-title">
-                  Expense Item
+                  Income
                 </p>
                 <a href="#" class="card-header-icon" aria-label="more options">
-                  <i class="fa fa-plus add"></i>
+                  <span class="icon" v-on:click="expense">
+                    <i class="fa fa-plus add" aria-hidden="true"></i>
+                  </span>
                 </a>
               </header>
-              <div class="card-content">
+              <div class="card-table">
                 <div class="content">
-                  <div class="control has-icons-left has-icons-right">
-                    <input class="input is-large" type="text" placeholder="">
-                    <span class="icon is-medium is-left">
-                      <i class="fa fa-plus"></i>
-                    </span>
-                    <span class="icon is-medium is-right">
-                      <i class="fa fa-check"></i>
-                    </span>
-                  </div>
+                  <table class="table is-fullwidth is-striped">
+                    <thead>
+
+                      <th>date</th>
+                      <th>name</th>
+                      <th>category</th>
+                      <th>amount</th>
+                      <th>edit</th>
+
+                    </thead>
+                    <tbody>
+                      <% result.forEach(function(item){
+                        if (!item.expense) {
+
+                        %>
+
+
+                      <tr>
+                        <td>2/15/19</td>
+                        <td>
+                          <%= item.name %>
+                        </td>
+                        <td>
+                          <%= item.category %>
+                        </td>
+                        <td>$
+                          <%= item.amount %>
+                        </td>
+                        <td><a class="button is-small" href="#"><i class="fas fa-pencil-alt"></i></a></td>
+                      </tr>
+                      <% } }); %>
+
+
+
+                    </tbody>
+                  </table>
+
                 </div>
               </div>
-            </div>
-            <div class="card">
-              <header class="card-header">
-                <p class="card-header-title">
-                  Income Item
-                </p>
-                <a href="#" class="card-header-icon" aria-label="more options">
-                  <i class="fa fa-plus add"></i>
-                </a>
-              </header>
-              <div class="card-content">
-                <div class="content">
-                  <div class="control has-icons-left has-icons-right">
-                    <input class="input is-large" type="text" placeholder="">
-                    <span class="icon is-medium is-left">
-                      <i class="fa fa-plus"></i>
-                    </span>
-                    <span class="icon is-medium is-right">
-                      <i class="fa fa-check"></i>
-                    </span>
-                  </div>
-                </div>
-              </div>
+              <footer class="card-footer">
+                <a href="#" class="card-footer-item">View All</a>
+              </footer>
             </div>
           </div>
         </div>
       </div>
     </div>
+
+
+
   </div>
   <!-- END Main Section -->
 
   <!-- Footer -->
   <footer class="footer">
     <div class="content has-text-centered">
-      <p id="test">
+      <p>
         <strong>Bulgae</strong> by <a class="has-text-primary" href="http://ludahl.com">Josh Ludahl</a>. Made with <i
           class="fas fa-beer"></i>
         and <i class="fas fa-coffee"></i>.
@@ -285,7 +331,8 @@
 
   <!-- Scripts -->
   <script src="/static/javascript/vue-app.js"></script>
-  <script src="static/javascript/bulma.js"></script>
+  <script src="/static/javascript/bulma.js"></script>
+  <script src="/static/javascript/vue-modal.js"></script>
 
 </body>
 

@@ -1,14 +1,17 @@
 
 const express = require('express');
 const app = express();
-const settings = require('./settings');
 const morgan = require('morgan');
 const path = require('path');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const sessions = require('client-sessions');
-const auth = require('./api/middleware/login_check')
-const auth2 = require('./api/middleware/user_mw');
+
+//  Middleware
+const settings = require('./settings');
+const coors = require('./api/middleware/coors');
+const ensureLogin = require('./api/middleware/login_check');
+const userCheck = require('./api/middleware/user_mw');
 
 //  DB
 const connectionURL ='mongodb://' + settings.MONGO_USER + ':' + settings.MONGO_PW + settings.MONGO_URI;
@@ -21,16 +24,9 @@ app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
+
 //  Allow CORS access
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-    if (req.method === 'OPTIONS') {
-        res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET');
-        return res.status(200).json({});
-    }
-    next();
-});
+app.use(coors);
 
 //  Paths
 app.set('views', path.join(__dirname, '/public/pages'));
@@ -39,6 +35,10 @@ app.use('/static', express.static(__dirname + '/public'));
 
 //  Cookies
 app.set('trust proxy', 1) // trust first proxy
+
+/**
+ *      Change secure to true on production
+ */
 app.use(sessions({
   secret: settings.COOKIE_SECRET,
   cookieName: 'session',
@@ -52,8 +52,8 @@ app.use(sessions({
     }
 }));
 
-app.use(auth2);
 
+app.use(userCheck);
 //  ROUTES
 //  Landing Route
 app.use('/', require('./api/routes/index'));
@@ -62,11 +62,11 @@ app.use('/', require('./api/routes/index'));
 app.use('/users', require('./api/routes/users'));
 
 //  Dashboard
-app.use('/dashboard', auth, require('./api/routes/dashboard'));
+app.use('/dashboard', ensureLogin, require('./api/routes/dashboard'));
 
 //  Admin Route
 //  Using auth middleware to protect endpoint and ensure login
-app.use('/admin', auth, require('./api/routes/admin'));
+app.use('/admin', ensureLogin, require('./api/routes/admin'));
 
 //  CUSTOM ERROR HANDLING
 app.use((req, res, next) => {
@@ -77,7 +77,7 @@ app.use((req, res, next) => {
 
 app.use((error, req, res, next) => {
     res.status(error.status || 500);
-    res.json({
+    res.json({ 
         error: {
             message: error.message
         }

@@ -1,3 +1,7 @@
+/**
+ *      The purpose of this middleware is to check for a valid user
+ */
+
 const User = require('../models/user');
 module.exports = (req, res, next) => {
 

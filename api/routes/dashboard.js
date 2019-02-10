@@ -27,9 +27,6 @@ router.get('/', async (req, res, next) => {
                 income += item.amount;
             }
         });
-        console.log("Income " + income + "; expenses " + expense);
-
-
         res.render('admin/index', {
             user: req.session.email,
             result,
