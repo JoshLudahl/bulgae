@@ -3,9 +3,11 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const path = require('path');
+const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const sessions = require('client-sessions');
+const csrf = require('csurf')
 
 //  Middleware
 const settings = require('./settings');
@@ -52,6 +54,8 @@ app.use(sessions({
     }
 }));
 
+app.use(csrf());
+
 
 app.use(userCheck);
 //  ROUTES
@@ -77,7 +81,7 @@ app.use((req, res, next) => {
 
 app.use((error, req, res, next) => {
     res.status(error.status || 500);
-    res.json({ 
+    res.json({
         error: {
             message: error.message
         }

@@ -68,7 +68,8 @@
         <section class="modal-card-body">
           <!-- Content ... -->
           <div class="field">
-            <form id="new_item">
+            <form id="new_item" method="POST" action="dashboard/add">
+              <input type="hidden" name="_csrf" value="<%= csrfToken() %>">
               <h6 class="subtitle is-6"><span class="tag is normal"> All fields are required</span></h6>
               <div class="control">
                 <input class="input is-large inputpad" type="text" name="name" placeholder="Name" required>
@@ -198,7 +199,7 @@
                 <p class="card-header-title">
                   Expenses
                 </p>
-                <a href="#" class="card-header-icon" aria-label="more options">
+                <a href="#" v-on:click="expense" class="card-header-icon" aria-label="more options">
                   <span class="icon" v-on:click="expense" alt="add expense">
                     <i class="fa fa-plus add" alt="Add Expense" aria-hidden="true"></i>
                   </span>

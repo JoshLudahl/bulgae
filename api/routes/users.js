@@ -3,6 +3,7 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const User = require("../models/user");
 const bcrypt = require("bcryptjs");
+const csrf = require('../middleware/attach_csrf_token');
 
 
 //  Default to load login
@@ -16,7 +17,7 @@ router.get('/', (req, res, next) => {
 });
 
 // GET Login
-router.get('/login', (req, res, next) => {
+router.get('/login', csrf, (req, res, next) => {
   //  See if the user is already logged in
   if (req.session && req.session.userId) {
     res.redirect('../dashboard');
@@ -27,7 +28,7 @@ router.get('/login', (req, res, next) => {
 });
 
 //  Get Register page
-router.get('/register', (req, res, next) => {
+router.get('/register', csrf, (req, res, next) => {
   //  See if the user is already logged in
   if (req.session && req.session.userId) {
     res.redirect('../dashboard');

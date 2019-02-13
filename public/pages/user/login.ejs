@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
 
   <!-- Font Awesome - https://fontawesome.com -->
-  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 
 
   <!-- Custom CSS -->
@@ -77,7 +77,7 @@
         <div class="login-form">
           <form action="/users/login" method="POST">
             <div class="control-group">
-              <input type="hidden" name="_csrf" value="">
+              <input type="hidden" name="_csrf" value="<%= csrfToken() %>">
               <input name="email" type="text" class="login-field" value="" placeholder="Email" id="login-name" required>
               <label class="login-field-icon fui-user" for="login-name"></label>
             </div>
@@ -99,7 +99,7 @@
   <!-- END Login Form  -->
 
   <!-- JS for responsive menu -->
-  <script src="static/javascript/bulma.js"></script>
+  <script src="/static/javascript/bulma.js"></script>
 
 </body>
 
