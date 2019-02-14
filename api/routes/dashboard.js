@@ -21,10 +21,9 @@ router.get('/', csrf, async (req, res, next) => {
         let expense = 0;
         let income = 0;
         result.forEach(item => {
-            if(item.expense){
+            if (item.expense) {
                 expense += item.amount;
-            }
-            else {
+            } else {
                 income += item.amount;
             }
         });
@@ -56,7 +55,7 @@ router.post('/add', async (req, res, next) => {
     //  Get session id for user
     const user = req.session.userId;
 
-console.log(req.body);
+    console.log(req.body);
 
     //  Pull in request params
     const {
@@ -148,3 +147,4 @@ router.post('/delete/:id', csrf, async (req, res, next) => {
 });
 
 module.exports = router;
+
