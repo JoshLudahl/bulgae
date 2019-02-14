@@ -17,14 +17,13 @@ const userCheck = require('./api/middleware/user_mw');
 
 //  DB
 const connectionURL ='mongodb://' + settings.MONGO_USER + ':' + settings.MONGO_PW + settings.MONGO_URI;
-
 mongoose.connect(connectionURL, {useNewUrlParser: true, useCreateIndex: true});
-
 mongoose.Promise = global.Promise;
+
 //  Logging
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(bodyParser.json());
+//app.use(bodyParser.json());
 
 
 //  Allow CORS access
@@ -74,7 +73,7 @@ app.use('/admin', ensureLogin, require('./api/routes/admin'));
 
 //  CUSTOM ERROR HANDLING
 app.use((req, res, next) => {
-    const error = new Error('404 Not found');
+    const error = new Error('404 Not found.');
     error.status = 404;
     next(error);
 });

@@ -55,7 +55,8 @@ router.get('/:id', (req, res, next) => {
 router.post('/add', async (req, res, next) => {
     //  Get session id for user
     const user = req.session.userId;
-    console.log('USER::::: ' + user);
+
+console.log(req.body);
 
     //  Pull in request params
     const {
@@ -81,10 +82,7 @@ router.post('/add', async (req, res, next) => {
 
         const saveBudget = await budgetItem.save();
 
-        res.status(200).json({
-            message: 'Item saved',
-            saveBudget
-        });
+        res.redirect('../dashboard');
 
     } catch (error) {
         res.status(500).json({
@@ -127,7 +125,7 @@ router.patch('/:id', async (req, res, next) => {
 });
 
 //  Delete a budget item
-router.delete('/:id', async (req, res, next) => {
+router.post('/delete/:id', csrf, async (req, res, next) => {
     //  Get session id for user
     const user = req.session.userId;
     //  Check if user owns the id

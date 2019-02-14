@@ -23,6 +23,10 @@
 </head>
 
 <body>
+
+
+
+
   <!-- Navigation -->
   <nav class="navbar is-fixed-top">
     <div class="container is-white">
@@ -80,9 +84,9 @@
               <div class="field inputpad-plus">
                   <p class="control has-icons-left">
                     <span class="select is-medium is-primary">
-                      <select>
-                        <option selected name="expense">Expense</option>
-                        <option name="income">Income</option>
+                      <select name="expense">
+                        <option selected value="true" name="expense">Expense</option>
+                        <option value="false" name="income">Income</option>
                       </select>
                     </span>
                   </p>
@@ -215,11 +219,13 @@
                       <th>category</th>
                       <th>amount</th>
                       <th>edit</th>
+                      <th></th>
 
                     </thead>
                     <tbody>
                       <% result.forEach(function(item){
                         if (item.expense) {
+                          var goat = item._id;
                         %>
 
                       <tr>
@@ -235,6 +241,12 @@
                           <%= item.amount %>
                         </td>
                         <td><a class="button is-small" href="#"><i class="fas fa-pencil-alt"></i></a></td>
+                        <td>
+                          <form method="POST" action="/dashboard/delete/<%= item._id %>">
+                            <input type="hidden" name="_csrf" value="<%= csrfToken() %>">
+                            <button type="submit">X</button>
+                        </form>
+                        </td>
                       </tr>
                       <% } }); %>
 
@@ -334,6 +346,7 @@
   <script src="/static/javascript/vue-app.js"></script>
   <script src="/static/javascript/bulma.js"></script>
   <script src="/static/javascript/vue-modal.js"></script>
+
 
 </body>
 
