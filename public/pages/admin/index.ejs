@@ -73,7 +73,7 @@
           <!-- Content ... -->
           <div class="field">
             <form id="new_item" method="POST" action="dashboard/add">
-              <input type="hidden" name="_csrf" value="<%= csrfToken() %>">
+              <input type="hidden" id="_csrf" name="_csrf" value="<%= csrfToken() %>">
               <h6 class="subtitle is-6"><span class="tag is normal"> All fields are required</span></h6>
               <div class="control">
                 <input class="input is-large inputpad" type="text" name="name" placeholder="Name" required>
@@ -321,6 +321,7 @@
               </div>
               <footer class="card-footer">
                 <a href="#" class="card-footer-item">View All</a>
+
               </footer>
             </div>
           </div>
