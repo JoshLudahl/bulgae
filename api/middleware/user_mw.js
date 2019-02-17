@@ -4,7 +4,6 @@
 
 const User = require('../models/user');
 module.exports = (req, res, next) => {
-
     //  Check for session and session id
     if(!(req.session && req.session.userId)) {
         return next();

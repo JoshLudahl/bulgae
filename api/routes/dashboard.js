@@ -11,6 +11,7 @@ const csrf = require('../middleware/attach_csrf_token');
 
 //  Get initial dashboard
 router.get('/', csrf, async (req, res, next) => {
+
     //  Get session date for id
     const user = req.session.userId;
     //  Find by user
@@ -51,11 +52,10 @@ router.get('/:id', (req, res, next) => {
 });
 
 //  Create ONE budget item
-router.post('/add', async (req, res, next) => {
+router.post('/add', csrf, async (req, res, next) => {
+
     //  Get session id for user
     const user = req.session.userId;
-
-    console.log(req.body);
 
     //  Pull in request params
     const {
@@ -81,7 +81,7 @@ router.post('/add', async (req, res, next) => {
 
         const saveBudget = await budgetItem.save();
 
-        res.redirect('../dashboard');
+        res.status(200).json({message: 'item added'});
 
     } catch (error) {
         res.status(500).json({

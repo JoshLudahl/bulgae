@@ -36,7 +36,6 @@ router.get('/', csrf, async (req, res, next)=> {
     }
     //  Only give back budget items per the user
 
-
 });
 
 
