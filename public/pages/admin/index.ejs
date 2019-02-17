@@ -6,8 +6,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <!-- production version, optimized for size and speed -->
-  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
 
   <!-- Bulma - https://bulma.io/  -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
@@ -79,39 +78,40 @@
                 <input class="input is-large inputpad" type="text" name="name" placeholder="Name" required>
                 <input class="input is-large inputpad" type="text" name="category" placeholder="Category" required>
                 <input class="input is-large inputpad" type="text" name="amount" placeholder="Amount" required>
-                <input class="input is-large inputpad" type="text" name="description" placeholder="Description" required>
+                <input class="input is-large inputpad" type="text" name="description" placeholder="Description"
+                  required>
               </div>
               <div class="field inputpad-plus">
-                  <p class="control has-icons-left">
-                    <span class="select is-medium is-primary">
-                      <select name="expense">
-                        <option selected value="true" name="expense">Expense</option>
-                        <option value="false" name="income">Income</option>
-                      </select>
-                    </span>
-                  </p>
+                <p class="control has-icons-left">
+                  <span class="select is-medium is-primary">
+                    <select name="expense">
+                      <option selected value="true" name="expense">Expense</option>
+                      <option value="false" name="income">Income</option>
+                    </select>
+                  </span>
+                </p>
 
 
 
-                </div>
-              </form>
-            </div>
+              </div>
+            </form>
+          </div>
         </section>
         <footer class="modal-card-foot modal-card-head-background-color">
 
           <!-- onclick="document.getElementById('new_item').submit();" -->
           <a href="#" @click="removes" class="button is-primary is-inverted">
-              <span class="icon is-small">
-                <i class="fas fa-check"></i>
-              </span>
-              <span>Save</span>
-            </a>
-            <a class="button is-danger is-inverted">
-                <span class="icon is-small" @click="close">
-                  <i class="fas fa-times" @click="close"></i>
-                </span>
-                <span @click="close">Cancel</span>
-              </a>
+            <span class="icon is-small">
+              <i class="fas fa-check"></i>
+            </span>
+            <span>Save</span>
+          </a>
+          <a class="button is-danger is-inverted">
+            <span class="icon is-small" @click="close">
+              <i class="fas fa-times" @click="close"></i>
+            </span>
+            <span @click="close">Cancel</span>
+          </a>
 
         </footer>
       </div>
@@ -246,7 +246,7 @@
                           <form method="POST" action="/dashboard/delete/<%= item._id %>">
                             <input type="hidden" name="_csrf" value="<%= csrfToken() %>">
                             <button type="submit">X</button>
-                        </form>
+                          </form>
                         </td>
                       </tr>
                       <% } }); %>
@@ -308,7 +308,7 @@
                           <form method="POST" action="/dashboard/delete/<%= item._id %>">
                             <input type="hidden" name="_csrf" value="<%= csrfToken() %>">
                             <button type="submit">X</button>
-                        </form>
+                          </form>
                         </td>
                       </tr>
                       <% } }); %>
@@ -351,7 +351,7 @@
 
 
   <!-- Scripts -->
-  <script src="/static/javascript/vue-app.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
   <script src="/static/javascript/bulma.js"></script>
   <script src="/static/javascript/vue-modal.js"></script>
 
