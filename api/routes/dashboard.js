@@ -10,7 +10,7 @@ const Budget = require('../models/budget');
 const csrf = require('../middleware/attach_csrf_token');
 
 //  Get initial dashboard
-router.get('/', csrf, async (req, res, next) => {
+router.get('/gather', csrf, async (req, res, next) => {
 
     //  Get session date for id
     const user = req.session.userId;
@@ -40,9 +40,13 @@ router.get('/', csrf, async (req, res, next) => {
         });
     }
     //  Only give back budget items per the user
-
 });
 
+router.get('/', (req, res, next) => {
+
+    //  Renter the dashboard
+    res.render('admin/index');
+});
 // Get ONE budget item
 router.get('/:id', (req, res, next) => {
     //  Get session information for user
