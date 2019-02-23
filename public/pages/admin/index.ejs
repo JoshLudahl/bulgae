@@ -158,7 +158,7 @@
           <div class="hero-body">
             <div class="container">
               <h1 class="title">
-                {{ message }}
+                {{ message }} {{ userTitle }}
 
               </h1>
               <h2 class="subtitle">
@@ -171,26 +171,19 @@
           <div class="tile is-ancestor has-text-centered">
             <div class="tile is-parent">
               <article class="tile is-child box">
-                <p class="title">$
-
-                </p>
+                  <amount-header v-bind:amount="inc - exp"></amount-header>
                 <p class="subtitle">Net Income</p>
               </article>
             </div>
             <div class="tile is-parent">
               <article class="tile is-child box">
-                <p class="title">$
-
-                </p>
+                    <amount-header v-bind:amount="exp"></amount-header>
                 <p class="subtitle">Expenses</p>
               </article>
             </div>
             <div class="tile is-parent">
               <article class="tile is-child box">
-                <p class="title">
-                  $
-
-                </p>
+                  <amount-header v-bind:amount="inc"></amount-header>
                 <p class="subtitle">Income</p>
               </article>
             </div>
@@ -214,18 +207,18 @@
                 <div class="content">
                   <table class="table is-fullwidth is-striped">
                     <thead>
-                      <th></th>
-                      <th>date</th>
-                      <th>name</th>
-                      <th>category</th>
-                      <th>amount</th>
-                      <th>edit</th>
-                      <th></th>
+                      <tr>
+                        <th></th>
+                        <th>date</th>
+                        <th>name</th>
+                        <th>category</th>
+                        <th>amount</th>
+                        <th>edit</th>
+                        <th></th>
+                      </tr>
 
                     </thead>
                     <tbody>
-
-
                       <tr>
                         <td width="5%"><i class="fas fa-bell"></i></td>
                         <td>2/15/19</td>
@@ -273,12 +266,14 @@
                 <div class="content">
                   <table class="table is-fullwidth is-striped">
                     <thead>
-
-                      <th>date</th>
-                      <th>name</th>
-                      <th>category</th>
-                      <th>amount</th>
-                      <th>edit</th>
+                      <tr>
+                        <th>date</th>
+                        <th>name</th>
+                        <th>category</th>
+                        <th>amount</th>
+                        <th>edit</th>
+                        <th></th>
+                      </tr>
 
                     </thead>
                     <tbody>
@@ -323,22 +318,25 @@
         </div>
       </div>
     </div>
-    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="content has-text-centered">
+        <p>
+          <strong>Bulgae</strong> by <a class="has-text-primary" href="http://ludahl.com">Josh Ludahl</a>. Made with <i
+            class="fas fa-beer"></i>
+          and <i class="fas fa-coffee"></i>.
+        </p>
+
+
+      </div>
+    </footer>
+    <!-- END Footer -->
+
+  </div>
   <!-- END Main Section -->
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="content has-text-centered">
-      <p>
-        <strong>Bulgae</strong> by <a class="has-text-primary" href="http://ludahl.com">Josh Ludahl</a>. Made with <i
-          class="fas fa-beer"></i>
-        and <i class="fas fa-coffee"></i>.
-      </p>
 
-
-    </div>
-  </footer>
-  <!-- END Footer -->
 
 
   <!-- Scripts -->

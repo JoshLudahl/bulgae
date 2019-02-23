@@ -28,7 +28,7 @@ router.get('/gather', csrf, async (req, res, next) => {
                 income += item.amount;
             }
         });
-        res.render('admin/index', {
+        res.status(200).json({
             user: req.session.email,
             result,
             income,
@@ -43,7 +43,6 @@ router.get('/gather', csrf, async (req, res, next) => {
 });
 
 router.get('/', csrf, (req, res, next) => {
-
     //  Renter the dashboard
     res.render('admin/index');
 });
