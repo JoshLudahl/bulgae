@@ -42,7 +42,7 @@ router.get('/gather', csrf, async (req, res, next) => {
     //  Only give back budget items per the user
 });
 
-router.get('/', (req, res, next) => {
+router.get('/', csrf, (req, res, next) => {
 
     //  Renter the dashboard
     res.render('admin/index');
