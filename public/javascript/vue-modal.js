@@ -5,6 +5,33 @@ Vue.component('amount-header',{
   template: `<p class="title"> {{ '$' + amount }}</p>`
 });
 
+Vue.component('budget-list', {
+  props: ['budget'],
+  template:`<tr>
+  <td width="5%"><i class="fas fa-bell"></i></td>
+  <td>2/15/19</td>
+  <td>
+    <!-- item.name -->
+   {{ budget.name }}
+  </td>
+  <td>
+    <!-- item.category-->
+    {{ budget.category }}
+  </td>
+  <td>$
+    <!-- item.amount -->
+    {{ budget.amount }}
+  </td>
+  <td><a class="button is-small" href="#"><i class="fas fa-pencil-alt"></i></a></td>
+  <td>
+    <form>
+      <input type="hidden" name="_csrf" value="<%= csrfToken() %>">
+      <button type="submit">X</button>
+    </form>
+  </td>
+  </tr>`
+});
+
 
 var app = new Vue({
   el: '#show-modal',
@@ -66,7 +93,7 @@ var app = new Vue({
     gather: function () {
       getData('dashboard/gather')
         .then(response => {
-          console.log(response);
+          //  console.log(response);
 
           //  General setup for name, income and expense headers
           this.expense = response.expense;
@@ -80,7 +107,7 @@ var app = new Vue({
           });
 
 
-        }) // JSON-string from `response.json()` call
+        })
         .catch(error => console.error(error));
 
       function getData(url = ``) {
@@ -114,6 +141,12 @@ var app = new Vue({
     },
     inc() {
       return this.income;
+    },
+    expenseList() {
+      return this.expenses;
+    },
+    incomeList() {
+      return this.incomes;
     }
   }
 });

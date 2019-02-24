@@ -171,19 +171,19 @@
           <div class="tile is-ancestor has-text-centered">
             <div class="tile is-parent">
               <article class="tile is-child box">
-                  <amount-header v-bind:amount="inc - exp"></amount-header>
+                <amount-header v-bind:amount="inc - exp"></amount-header>
                 <p class="subtitle">Net Income</p>
               </article>
             </div>
             <div class="tile is-parent">
               <article class="tile is-child box">
-                    <amount-header v-bind:amount="exp"></amount-header>
+                <amount-header v-bind:amount="exp"></amount-header>
                 <p class="subtitle">Expenses</p>
               </article>
             </div>
             <div class="tile is-parent">
               <article class="tile is-child box">
-                  <amount-header v-bind:amount="inc"></amount-header>
+                <amount-header v-bind:amount="inc"></amount-header>
                 <p class="subtitle">Income</p>
               </article>
             </div>
@@ -219,6 +219,8 @@
 
                     </thead>
                     <tbody>
+
+                      <!-- Insert Vue Table here -->
                       <tr>
                         <td width="5%"><i class="fas fa-bell"></i></td>
                         <td>2/15/19</td>
