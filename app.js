@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const sessions = require('client-sessions');
 const csrf = require('csurf')
+const helmet = require('helmet');
 
 //  Middleware
 const settings = require('./settings');
@@ -25,6 +26,8 @@ app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: false}));
 //app.use(bodyParser.json());
 
+//  Wear a helmet
+app.use(helmet());
 
 //  Allow CORS access
 app.use(coors);

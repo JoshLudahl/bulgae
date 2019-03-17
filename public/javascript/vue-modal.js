@@ -45,7 +45,7 @@ var app = new Vue({
     incomes:[]
   },
   methods: {
-    expense: function () {
+    expenseModal: function () {
       this.isActive = true;
     },
     close: function () {
@@ -105,8 +105,6 @@ var app = new Vue({
           list.forEach(item => {
             item.expense ? this.expenses.push(item) : this.incomes.push(item);
           });
-
-
         })
         .catch(error => console.error(error));
 

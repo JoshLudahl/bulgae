@@ -6,8 +6,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-
-
   <!-- Bulma - https://bulma.io/  -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
 
@@ -136,8 +134,8 @@
             <li>
               <a>Manage Your Budget</a>
               <ul>
-                <li><a v-on:click="expense">Add Expense</a></li>
-                <li><a v-on:click="expense">Add Income</a></li>
+                <li><a @click="expenseModal">Add Expense</a></li>
+                <li><a @click="expenseModal">Add Income</a></li>
               </ul>
             </li>
 
@@ -197,8 +195,8 @@
                 <p class="card-header-title">
                   Expenses
                 </p>
-                <a href="#" v-on:click="expense" class="card-header-icon" aria-label="more options">
-                  <span class="icon" v-on:click="expense" alt="add expense">
+                <a href="#" @click="expenseModal" class="card-header-icon" aria-label="more options">
+                  <span class="icon" @click="expenseModal" alt="add expense">
                     <i class="fa fa-plus add" alt="Add Expense" aria-hidden="true"></i>
                   </span>
                 </a>
@@ -221,26 +219,8 @@
                     <tbody>
 
                       <!-- Insert Vue Table here -->
-                      <tr>
-                        <td width="5%"><i class="fas fa-bell"></i></td>
-                        <td>2/15/19</td>
-                        <td>
-                          <!-- item.name -->
-                        </td>
-                        <td>
-                          <!-- item.category-->
-                        </td>
-                        <td>$
-                          <!-- item.amount -->
-                        </td>
-                        <td><a class="button is-small" href="#"><i class="fas fa-pencil-alt"></i></a></td>
-                        <td>
-                          <form>
-                            <input type="hidden" name="_csrf" value="<%= csrfToken() %>">
-                            <button type="submit">X</button>
-                          </form>
-                        </td>
-                      </tr>
+                      <budget-list v-for="budget in expenseList" v-bind:key="budget._id" v-bind:budget="budget"></budget-list>
+
 
                     </tbody>
                   </table>
@@ -259,7 +239,7 @@
                   Income
                 </p>
                 <a href="#" class="card-header-icon" aria-label="more options">
-                  <span class="icon" v-on:click="expense">
+                  <span class="icon" @click="expenseModal">
                     <i class="fa fa-plus add" aria-hidden="true"></i>
                   </span>
                 </a>
