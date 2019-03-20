@@ -89,3 +89,10 @@ html, body {
   .modal-card-title {
     color: #ffffff;
   }
+  .is-trash {
+    border: none;
+    background: inherit;
+  }
+  .is-trash:hover {
+   cursor: pointer;
+  }

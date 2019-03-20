@@ -69,7 +69,7 @@
         <section class="modal-card-body">
           <!-- Content ... -->
           <div class="field">
-            <form id="new_item" method="POST" action="dashboard/add">
+            <form id="new_item" method="POST">
               <input type="hidden" id="_csrf" name="_csrf" value="<%= csrfToken() %>">
               <h6 class="subtitle is-6"><span class="tag is normal"> All fields are required</span></h6>
               <div class="control">
@@ -98,7 +98,7 @@
         <footer class="modal-card-foot modal-card-head-background-color">
 
           <!-- onclick="document.getElementById('new_item').submit();" -->
-          <a href="#" @click="removes" class="button is-primary is-inverted">
+          <a href="#" @click="addItem" class="button is-primary is-inverted">
             <span class="icon is-small">
               <i class="fas fa-check"></i>
             </span>
@@ -203,27 +203,13 @@
               </header>
               <div class="card-table">
                 <div class="content">
-                  <table class="table is-fullwidth is-striped">
-                    <thead>
-                      <tr>
-                        <th></th>
-                        <th>date</th>
-                        <th>name</th>
-                        <th>category</th>
-                        <th>amount</th>
-                        <th>edit</th>
-                        <th></th>
-                      </tr>
-
-                    </thead>
-                    <tbody>
+                  
 
                       <!-- Insert Vue Table here -->
-                      <budget-list v-for="budget in expenseList" v-bind:key="budget._id" v-bind:budget="budget"></budget-list>
+                      <budget-list v-on:deleteItems="deleteItem($event)" v-bind:budget="expenseList"></budget-list>
 
 
-                    </tbody>
-                  </table>
+                 
 
                 </div>
               </div>
@@ -246,48 +232,9 @@
               </header>
               <div class="card-table">
                 <div class="content">
-                  <table class="table is-fullwidth is-striped">
-                    <thead>
-                      <tr>
-                        <th>date</th>
-                        <th>name</th>
-                        <th>category</th>
-                        <th>amount</th>
-                        <th>edit</th>
-                        <th></th>
-                      </tr>
 
-                    </thead>
-                    <tbody>
-
-
-
-                      <tr>
-                        <td>2/15/19</td>
-                        <td>
-                          <!-- item.name -->
-                        </td>
-                        <td>
-                          <!-- item.category -->
-                        </td>
-                        <td>$
-                          <!-- item.amount -->
-                        </td>
-                        <td><a class="button is-small" href="#"><i class="fas fa-pencil-alt"></i></a></td>
-
-                        <td>
-                          <form>
-                            <input type="hidden" name="_csrf" value="<%= csrfToken() %>">
-                            <button type="submit">X</button>
-                          </form>
-                        </td>
-                      </tr>
-
-
-
-
-                    </tbody>
-                  </table>
+              <!-- Insert Vue Table here -->
+              <budget-list v-bind:budget="incomeList"></budget-list>
 
                 </div>
               </div>

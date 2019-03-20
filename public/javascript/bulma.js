@@ -28,3 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // document.getElementById("remove_item").addEventListener("click", function(event){
+  //   event.preventDefault()
+  // });
+

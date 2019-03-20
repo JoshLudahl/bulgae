@@ -84,7 +84,7 @@ router.post('/add', csrf, async (req, res, next) => {
 
         const saveBudget = await budgetItem.save();
 
-        res.status(200).json({message: 'item added'});
+        res.status(200).json({message: 'item added', budgetItem:budgetItem});
 
     } catch (error) {
         res.status(500).json({
@@ -127,7 +127,7 @@ router.patch('/:id', async (req, res, next) => {
 });
 
 //  Delete a budget item
-router.post('/delete/:id', csrf, async (req, res, next) => {
+router.delete('/delete/:id', csrf, async (req, res, next) => {
     //  Get session id for user
     const user = req.session.userId;
     //  Check if user owns the id
