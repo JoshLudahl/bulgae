@@ -206,7 +206,7 @@
                   
 
                       <!-- Insert Vue Table here -->
-                      <budget-list v-on:deleteItems="deleteItem($event)" v-bind:budget="expenseList"></budget-list>
+                      <budget-list v-on:destroy="deleteItem($event, true)" v-bind:budget="expenseList"></budget-list>
 
 
                  
@@ -234,7 +234,7 @@
                 <div class="content">
 
               <!-- Insert Vue Table here -->
-              <budget-list v-bind:budget="incomeList"></budget-list>
+              <budget-list v-bind:budget="incomeList" v-on:destroy="deleteItem($event, false)"></budget-list>
 
                 </div>
               </div>

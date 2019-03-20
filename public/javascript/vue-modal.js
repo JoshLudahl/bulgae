@@ -11,7 +11,7 @@ Vue.component('amount-header',{
 });
 
 Vue.component('budget-list', {
-  props: ['budget'],
+  props: ['budget','_csrf'],
   template:`<div>
   <table class="table is-fullwidth is-striped is-hoverable">
   <thead>
@@ -45,14 +45,18 @@ Vue.component('budget-list', {
   <td><a class="button is-small is-trash" href="#"><i class="fas fa-pencil-alt"></i></a></td>
   <td>
     <form id="remove_item">
-      <input id="remover" type="hidden" name="_csrf" value="<%= csrfToken() %>">
-      <input type="hidden" name="_id" value="{{item._id}}">
-      <button class="is-trash" @click="$emit('deleteItems', item._id)"><i class="far fa-trash-alt"></i></button>
+      
+      <a class="is-trash" @click="$emit('destroy', item._id)"><i class="far fa-trash-alt"></i></button>
     </form>
   </td>
   </tr>
   </tbody>
-  </table></div>`
+  </table></div>`,
+  methods: {
+    testing: function() {
+      console.log("Fuck");
+    }
+  }
 });
 
 
@@ -64,6 +68,7 @@ var app = new Vue({
     userName: '',
     income: 0,
     expense: 0,
+    budgetList:{},
     expenses:[],
     incomes:[]
   },
@@ -117,27 +122,25 @@ var app = new Vue({
       }
 
     },
-    deleteItem: function(item) {
+    deleteItem: function(item, budgetType) {
       //  Delete chosen item
-      
-
+      console.log('budget type is ' + budgetType);
       //  Remove from the expenses array
       
       postData('dashboard/delete/' + item, {
         answer: 42
       })
       .then(data => {
+        budgetType ? this.expenses = this.expenses.filter(x => x._id != data.id) : this.incomes = this.incomes.filter(x => x._id != item);
         
-        console.log('item removed, yay!');
       }) //  JSON-string from `response.json()` call
       .catch(error => console.error(error));
 
     function postData(url = ``) {
 
       const data = new URLSearchParams();
-      for (const pair of new FormData(document.getElementById('remove_item'))) {
-        data.append(pair[0], pair[1]);
-      }
+  
+      data.append("_csrf", document.getElementById('_csrf').value);
      
       //  Default options are marked with *
       return fetch(url, {
@@ -166,8 +169,8 @@ var app = new Vue({
           this.userName = response.user;
 
           //  Extract the budget items
-          const list = response.result;
-          list.forEach(item => {
+          this.budgetList = response.result;
+          this.budgetList.forEach(item => {
             item.expense ? this.expenses.push(item) : this.incomes.push(item);
           });
         })

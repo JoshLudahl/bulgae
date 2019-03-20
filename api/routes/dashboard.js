@@ -138,7 +138,8 @@ router.delete('/delete/:id', csrf, async (req, res, next) => {
             _id: req.params.id
         });
         res.status(200).json({
-            message: 'Item removed'
+            message: 'Item removed',
+            id:req.params.id
         })
 
     } catch (error) {
