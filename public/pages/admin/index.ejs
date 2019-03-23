@@ -104,7 +104,7 @@
             </span>
             <span>Save</span>
           </a>
-          <a class="button is-danger is-inverted">
+          <a @click="close" class="button is-danger is-inverted">
             <span class="icon is-small" @click="close">
               <i class="fas fa-times" @click="close"></i>
             </span>
@@ -206,7 +206,7 @@
                   
 
                       <!-- Insert Vue Table here -->
-                      <budget-list v-on:destroy="deleteItem($event, true)" v-bind:budget="expenseList"></budget-list>
+                      <budget-list v-on:destroy="deleteItem($event, true)" v-on:editor="editItem($event, true)" v-bind:budget="expenseList"></budget-list>
 
 
                  
