@@ -60,7 +60,7 @@ window.addEventListener("load", function (event) {
       userName: "",
       income: 0,
       expense: 0,
-      budgetList: {},
+      budgetList: [],
       expenses: [],
       incomes: []
     },
@@ -82,13 +82,11 @@ window.addEventListener("load", function (event) {
             //  Close the modal
             if (data.message !== "Error") {
 
-
               this.budgetList.push(data);
               //  Push new item to respective list
               data.budgetItem.expense ?
                 this.expenses.push(data.budgetItem) :
                 this.incomes.push(data.budgetItem);
-              console.log("break");
               data.budgetItem.expense ?
                 (this.expense += data.budgetItem.amount) :
                 (this.income += data.budgetItem.amount);
