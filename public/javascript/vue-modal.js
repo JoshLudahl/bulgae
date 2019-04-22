@@ -1,15 +1,15 @@
-window.addEventListener("load", function (event) {
+window.addEventListener('load', function(event) {
   // here is the Vue code
 
   Vue.config.devtools = true;
 
-  Vue.component("amount-header", {
-    props: ["amount"],
+  Vue.component('amount-header', {
+    props: ['amount'],
     template: `<p class="title"> {{ '$' + amount }}</p>`
   });
 
-  Vue.component("budget-list", {
-    props: ["budget", "_csrf"],
+  Vue.component('budget-list', {
+    props: ['budget', '_csrf'],
     template: `<div>
   <table class="table is-fullwidth is-striped is-hoverable">
   <thead>
@@ -53,11 +53,11 @@ window.addEventListener("load", function (event) {
   });
 
   var app = new Vue({
-    el: "#show-modal",
+    el: '#show-modal',
     data: {
       isActive: false,
-      message: "Welcome, ",
-      userName: "",
+      message: 'Welcome, ',
+      userName: '',
       income: 0,
       expense: 0,
       budgetList: [],
@@ -65,34 +65,32 @@ window.addEventListener("load", function (event) {
       incomes: []
     },
     methods: {
-      expenseModal: function () {
+      expenseModal: function() {
         this.isActive = true;
       },
-      close: function () {
+      close: function() {
         this.isActive = false;
         //  Clear the form data
-        document.getElementById("new_item").reset();
+        document.getElementById('new_item').reset();
       },
-      addItem: function () {
-        postData("dashboard/add")
+      addItem: function() {
+        postData('dashboard/add')
           .then(data => {
             //  Clear the form data
-            document.getElementById("new_item").reset();
+            document.getElementById('new_item').reset();
 
             //  Close the modal
-            if (data.message !== "Error") {
-
+            if (data.message !== 'Error') {
               this.budgetList.push(data);
               //  Push new item to respective list
-              data.budgetItem.expense ?
-                this.expenses.push(data.budgetItem) :
-                this.incomes.push(data.budgetItem);
-              data.budgetItem.expense ?
-                (this.expense += data.budgetItem.amount) :
-                (this.income += data.budgetItem.amount);
+              data.budgetItem.expense
+                ? this.expenses.push(data.budgetItem)
+                : this.incomes.push(data.budgetItem);
+              data.budgetItem.expense
+                ? (this.expense += data.budgetItem.amount)
+                : (this.income += data.budgetItem.amount);
               this.close();
             }
-
           }) //  JSON-string from `response.json()` call
           .catch(error => console.error(error));
 
@@ -100,36 +98,32 @@ window.addEventListener("load", function (event) {
           //  Bring in the form data and create form params to send
           const data = new URLSearchParams();
           for (const pair of new FormData(
-              document.getElementById("new_item")
-            )) {
+            document.getElementById('new_item')
+          )) {
             data.append(pair[0], pair[1]);
           }
 
           //  Default options are marked with *
           return fetch(url, {
-            method: "POST", // *GET, POST, PUT, DELETE, etc.
+            method: 'POST', // *GET, POST, PUT, DELETE, etc.
             // mode: "cors", // no-cors, cors, *same-origin
             //cache: "reload", // *default, no-cache, reload, force-cache, only-if-cached
-            credentials: "include", // include, *same-origin, omit
+            credentials: 'include', // include, *same-origin, omit
             headers: {
               //"Content-Type": "application/json",
-              "Content-Type": "application/x-www-form-urlencoded"
+              'Content-Type': 'application/x-www-form-urlencoded'
             },
-            referrer: "*client", // no-referrer, *client
+            referrer: '*client', // no-referrer, *client
             body: data //  body data type must match "Content-Type" header
           }).then(response => response.json()); //  parses response to JSON
         }
       },
-      deleteItem: function (item, budgetType) {
-
-
-
-        postData("dashboard/delete/" + item)
+      deleteItem: function(item, budgetType) {
+        postData('dashboard/delete/' + item)
           .then(data => {
             budgetType
-              ?
-              (this.expenses = this.expenses.filter(x => x._id != data.id)) :
-              (this.incomes = this.incomes.filter(x => x._id != item));
+              ? (this.expenses = this.expenses.filter(x => x._id != data.id))
+              : (this.incomes = this.incomes.filter(x => x._id != item));
 
             if (budgetType) {
               this.expense = 0;
@@ -143,32 +137,32 @@ window.addEventListener("load", function (event) {
               });
             }
             //  Clear the form
-            document.getElementById("new_item").reset();
+            document.getElementById('new_item').reset();
           }) //  JSON-string from `response.json()` call
           .catch(error => console.error(error));
 
         function postData(url = ``) {
           const data = new URLSearchParams();
 
-          data.append("_csrf", document.getElementById("_csrf").value);
+          data.append('_csrf', document.getElementById('_csrf').value);
 
           //  Default options are marked with *
           return fetch(url, {
-            method: "DELETE", // *GET, POST, PUT, DELETE, etc.
+            method: 'DELETE', // *GET, POST, PUT, DELETE, etc.
             //mode: "cors", // no-cors, cors, *same-origin
             //cache: "reload", // *default, no-cache, reload, force-cache, only-if-cached
-            credentials: "include", // include, *same-origin, omit
+            credentials: 'include', // include, *same-origin, omit
             headers: {
               //"Content-Type": "application/json",
-              "Content-Type": "application/x-www-form-urlencoded"
+              'Content-Type': 'application/x-www-form-urlencoded'
             },
             //referrer: "*client", // no-referrer, *client
             body: data //  body data type must match "Content-Type" header
           }).then(response => response.json()); //  parses response to JSON
         }
       },
-      gather: function () {
-        getData("dashboard/gather")
+      gather: function() {
+        getData('dashboard/gather')
           .then(response => {
             //  console.log(response);
 
@@ -188,32 +182,32 @@ window.addEventListener("load", function (event) {
         function getData(url = ``) {
           //  Default options are marked with *
           return fetch(url, {
-            method: "GET", // *GET, POST, PUT, DELETE, etc.
+            method: 'GET', // *GET, POST, PUT, DELETE, etc.
             // mode: "cors", // no-cors, cors, *same-origin
             //cache: "reload", // *default, no-cache, reload, force-cache, only-if-cached
-            credentials: "include", // include, *same-origin, omit
+            credentials: 'include', // include, *same-origin, omit
             headers: {
               //"Content-Type": "application/json",
-              "Content-Type": "application/json"
+              'Content-Type': 'application/json'
             },
-            referrer: "*client" // no-referrer, *client
+            referrer: '*client' // no-referrer, *client
             //body: data, //  body data type must match "Content-Type" header
           }).then(response => response.json()); //  parses response to JSON
         }
       },
-      editItem: function (item, exp) {
+      editItem: function(item, exp) {
         //  Show the modal
         this.isActive = true;
 
         const editable = this.budgetList.find(x => x._id == item);
         console.log(editable.amount);
         //  Populate modal with data
-        const form = document.getElementById("new_item");
+        const form = document.getElementById('new_item');
         form.name.value = editable.name;
         form.category.value = editable.category;
         form.amount.value = editable.amount;
         form.description.value = editable.description;
-        form.expense.selected = exp ? "expense" : "income";
+        form.expense.selected = exp ? 'expense' : 'income';
       }
     },
     mounted() {
