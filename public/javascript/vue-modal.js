@@ -208,7 +208,7 @@ window.addEventListener('load', function(event) {
         form.amount.value = editable.amount;
         form.description.value = editable.description;
         form.expense.selected = exp ? 'expense' : 'income';
-      }
+      } // TODO add in an edit feature
     },
     mounted() {
       this.gather();
