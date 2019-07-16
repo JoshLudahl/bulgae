@@ -198,8 +198,12 @@ window.addEventListener('load', function(event) {
       editItem: function(item, exp) {
         //  Show the modal
         this.isActive = true;
-
-        const editable = this.budgetList.find(x => x._id == item);
+        //  Swap save and edit
+        document.getElementById("saveButton").style.visibility = "collapse";
+        document.getElementById("updateButton").style.visibility = "visible";
+        
+        const editable = this.budgetList.find(itemId => itemId._id == item);
+        
         console.log(editable.amount);
         //  Populate modal with data
         const form = document.getElementById('new_item');
@@ -208,7 +212,10 @@ window.addEventListener('load', function(event) {
         form.amount.value = editable.amount;
         form.description.value = editable.description;
         form.expense.selected = exp ? 'expense' : 'income';
-      } // TODO add in an edit feature
+      }, // TODO add in an edit feature
+      updateItem: function() {
+        console.log("item updated");
+      }
     },
     mounted() {
       this.gather();

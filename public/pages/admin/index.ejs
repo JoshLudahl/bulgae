@@ -49,7 +49,8 @@
             </a>
           </span>
 
-          <a href="https://twitter.com/BulgaeBudgets" target="_blank" class="navbar-item"><i class="fab fa-twitter"></i></a>
+          <a href="https://twitter.com/BulgaeBudgets" target="_blank" class="navbar-item"><i
+              class="fab fa-twitter"></i></a>
         </div>
       </div>
     </div>
@@ -98,11 +99,19 @@
         <footer class="modal-card-foot modal-card-head-background-color">
 
           <!-- onclick="document.getElementById('new_item').submit();" -->
-          <a href="#" @click="addItem" class="button is-primary is-inverted">
+          <a id="saveButton" href="#" @click="addItem" class="button is-primary is-inverted">
+
             <span class="icon is-small">
               <i class="fas fa-check"></i>
             </span>
             <span>Save</span>
+          </a>
+          <a id="updateButton" href="#" @click="updateItem" class="button is-primary is-inverted">
+
+            <span class="icon is-small">
+              <i class="fas fa-check"></i>
+            </span>
+            <span>Save Changes</span>
           </a>
           <a @click="close" class="button is-danger is-inverted">
             <span class="icon is-small" @click="close">
@@ -203,13 +212,14 @@
               </header>
               <div class="card-table">
                 <div class="content">
-                  
-
-                      <!-- Insert Vue Table here -->
-                      <budget-list v-on:destroy="deleteItem($event, true)" v-on:editor="editItem($event, true)" v-bind:budget="expenseList"></budget-list>
 
 
-                 
+                  <!-- Insert Vue Table here -->
+                  <budget-list v-on:destroy="deleteItem($event, true)" v-on:editor="editItem($event, true)"
+                    v-bind:budget="expenseList"></budget-list>
+
+
+
 
                 </div>
               </div>
@@ -233,8 +243,8 @@
               <div class="card-table">
                 <div class="content">
 
-              <!-- Insert Vue Table here -->
-              <budget-list v-bind:budget="incomeList" v-on:destroy="deleteItem($event, false)"></budget-list>
+                  <!-- Insert Vue Table here -->
+                  <budget-list v-bind:budget="incomeList" v-on:destroy="deleteItem($event, false)"></budget-list>
 
                 </div>
               </div>
@@ -264,9 +274,6 @@
 
   </div>
   <!-- END Main Section -->
-
-
-
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/vue"></script>
