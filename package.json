@@ -45,7 +45,7 @@
     "node": "^11.15.0",
     "nodemon": "^2.0.4",
     "nvm": "0.0.4",
-    "passport": "^0.4.1",
+    "passport": "^0.6.0",
     "passport-local": "^1.0.0"
   },
   "devDependencies": {}
