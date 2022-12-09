@@ -40,13 +40,12 @@
     "helmet": "^3.23.3",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.5.9",
-    "mongoose": "^5.9.25",
+    "mongoose": "^6.8.0",
     "morgan": "^1.10.0",
-    "node": "^11.15.0",
+    "node": "^18.12.1",
     "nodemon": "^2.0.20",
     "nvm": "0.0.4",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0"
-  },
-  "devDependencies": {}
+  }
 }

@@ -1,13 +1,7 @@
-
-//  User schema is designed as a module based program.
-
-//  It allows you to only use this schema for authentication and allows you to use other databases to store user data.
-
-//  You can assign an owner to the other parts of your details schema, fully separating your user details.
-
 const mongoose = require('mongoose');
+const { Schema } = mongoose
 
-const userSchema = new mongoose.Schema({
+const userSchema = new Schema({
     _id: mongoose.Schema.Types.ObjectId,
     email: {
         type: mongoose.Schema.Types.String,
@@ -44,7 +38,7 @@ userSchema.methods.setCurrentTime = function(cb) {
 };
 
 userSchema.methods.comparePasswords = function(cb) {
-    return this.passwords == cb;
+    return this.password === cb;
 }
 
 module.exports = mongoose.model('User', userSchema);

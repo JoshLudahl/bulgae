@@ -2,43 +2,40 @@
 <html lang="en">
 
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <!-- Bulma - https://bulma.io/  -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
+    <!-- Bulma - https://bulma.io/  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css"/>
 
-  <!-- Font Awesome - https://fontawesome.com -->
-  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <!-- Font Awesome - https://fontawesome.com -->
+    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+            integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc"
+            crossorigin="anonymous"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/styles/styles.css">
+    <link rel="stylesheet" href="/static/styles/user-admin.css">
 
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="/static/styles/styles.css">
-  <link rel="stylesheet" href="/static/styles/user-admin.css">
-
-  <title>Bulgae - Budgeting is fun!</title>
+    <title>Bulgae - Budgeting is fun!</title>
 </head>
 
 <body>
-
-
-
-
-  <!-- Navigation -->
-  <nav class="navbar is-fixed-top">
+<!-- Navigation -->
+<nav class="navbar is-fixed-top">
     <div class="container is-white">
-      <div class="navbar-brand">
-        <a href="/" class="navbar-item">
-          <img src="/static/assets/logo.png" alt="Bulgae" class="svglogok"> Bulgae
-        </a>
-        <span class="navbar-burger burger" data-target="navbarMenuHeroB">
+        <div class="navbar-brand">
+            <a href="/" class="navbar-item">
+                <img src="/public/assets/logo.png" alt="Bulgae" class="svglogok"> Bulgae
+            </a>
+            <span class="navbar-burger burger" data-target="navbarMenuHeroB">
           <span></span>
           <span></span>
           <span></span>
         </span>
-      </div>
-      <div id="navbarMenuHeroB" class="navbar-menu">
-        <div class="navbar-end">
+        </div>
+        <div id="navbarMenuHeroB" class="navbar-menu">
+            <div class="navbar-end">
 
           <span class="navbar-item">
             <a href="/users/logout" class="button is-primary">
@@ -49,237 +46,245 @@
             </a>
           </span>
 
-          <a href="https://twitter.com/BulgaeBudgets" target="_blank" class="navbar-item"><i
-              class="fab fa-twitter"></i></a>
+                <a href="https://twitter.com/BulgaeBudgets" target="_blank" class="navbar-item"><i
+                            class="fab fa-twitter"></i></a>
+            </div>
         </div>
-      </div>
     </div>
-  </nav>
-  <!-- END Navication -->
+</nav>
+<!-- END Navication -->
 
-  <!-- Main Section -->
-  <div class="container is-fluid push" id="show-modal">
+<!-- Main Section -->
+<div class="container is-fluid push" id="show-modal">
     <!-- MODAL -->
     <div class="modal" v-bind:class="{'is-active':isActive}">
-      <div class="modal-background"></div>
-      <div class="modal-card">
-        <header class="modal-card-head modal-card-head-background-color">
-          <p class="modal-card-title has-text-weight-bold">Create New Budget Item</p>
-          <button @click="close" class="delete" aria-label="close"></button>
-        </header>
-        <section class="modal-card-body">
-          <!-- Content ... -->
-          <div class="field">
-            <form id="new_item" method="POST">
-              <input type="hidden" id="_csrf" name="_csrf" value="<%= csrfToken() %>">
-              <h6 class="subtitle is-6"><span class="tag is normal"> All fields are required</span></h6>
-              <div class="control">
-                <input class="input is-large inputpad" type="text" name="name" placeholder="Name" required>
-                <input class="input is-large inputpad" type="text" name="category" placeholder="Category" required>
-                <input class="input is-large inputpad" type="text" name="amount" placeholder="Amount" required>
-                <input class="input is-large inputpad" type="text" name="description" placeholder="Description"
-                  required>
-              </div>
-              <div class="field inputpad-plus">
-                <p class="control has-icons-left">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head modal-card-head-background-color">
+                <p class="modal-card-title has-text-weight-bold">Create New Budget Item</p>
+                <button @click="close" class="delete" aria-label="close"></button>
+            </header>
+            <section class="modal-card-body">
+                <!-- Content ... -->
+                <div class="field">
+                    <form id="new_item" method="POST">
+                        <input type="hidden" id="_csrf" name="_csrf" value="<%= csrfToken() %>">
+                        <h6 class="subtitle is-6"><span class="tag is normal"> All fields are required</span></h6>
+                        <div class="control">
+
+                            <input class="input is-large inputpad" type="text" name="name" placeholder="Name"
+                                   required>
+
+
+                            <input class="input is-large inputpad" type="text" name="category"
+                                   placeholder="Category" required>
+
+
+                            <input class="input is-large inputpad" type="text" name="amount" placeholder="Amount"
+                                   required>
+
+
+                            <input class="input is-large inputpad" type="text" name="description"
+                                   placeholder="Description"
+                                   required>
+
+                        </div>
+                        <div class="field inputpad-plus">
+                            <p class="control has-icons-left">
                   <span class="select is-medium is-primary">
-                    <select name="expense">
-                      <option selected value="true" name="expense">Expense</option>
-                      <option value="false" name="income">Income</option>
-                    </select>
+
+<select name="expense">
+  <option selected value="true" name="expense">Expense</option>
+  <option value="false" name="income">Income</option>
+</select>
+
                   </span>
-                </p>
+                            </p>
 
-                <input type="hidden" name="update" value="false">
+                            <input type="hidden" name="update" value="false">
 
-              </div>
-            </form>
-          </div>
-        </section>
-        <footer class="modal-card-foot modal-card-head-background-color">
+                        </div>
+                    </form>
+                </div>
+            </section>
+            <footer class="modal-card-foot modal-card-head-background-color">
 
-          <!-- onclick="document.getElementById('new_item').submit();" -->
-          <a id="saveButton" href="#" @click="addItem" class="button is-primary is-inverted">
-
-            <span class="icon is-small">
-              <i class="fas fa-check"></i>
-            </span>
-            <span>Save</span>
-          </a>
-          <a id="updateButton" href="#" @click="updateItem" class="button is-primary is-inverted">
+                <!-- onclick="document.getElementById('new_item').submit();" -->
+                <a id="saveButton" href="#" @click="addItem" class="button is-primary is-inverted">
 
             <span class="icon is-small">
               <i class="fas fa-check"></i>
             </span>
-            <span>Save Changes</span>
-          </a>
-          <a @click="close" class="button is-danger is-inverted">
+                    <span>Save</span>
+                </a>
+                <a id="updateButton" href="#" @click="updateItem" class="button is-primary is-inverted">
+
+            <span class="icon is-small">
+              <i class="fas fa-check"></i>
+            </span>
+                    <span>Save Changes</span>
+                </a>
+                <a @click="close" class="button is-danger is-inverted">
             <span class="icon is-small" @click="close">
               <i class="fas fa-times" @click="close"></i>
             </span>
-            <span @click="close">Cancel</span>
-          </a>
+                    <span @click="close">Cancel</span>
+                </a>
 
-        </footer>
-      </div>
+            </footer>
+        </div>
     </div>
     <!-- END MODAL -->
 
     <div class="columns">
-      <div class="column">
-        <aside class="menu">
-          <p class="menu-label">
-            General
-          </p>
-          <ul class="menu-list">
-            <li><a class="is-active">Dashboard</a></li>
-            <li><a>Customers</a></li>
-          </ul>
-          <p class="menu-label">
-            Budget
-          </p>
-          <ul class="menu-list">
-
-            <li>
-              <a>Manage Your Budget</a>
-              <ul>
-                <li><a @click="expenseModal">Add Expense</a></li>
-                <li><a @click="expenseModal">Add Income</a></li>
-              </ul>
-            </li>
-
-          </ul>
-          <p class="menu-label">
-            Account
-          </p>
-          <ul class="menu-list">
-            <li><a>Personal Details</a></li>
-            <li><a>Settings</a></li>
-            <li><a href="/users/logout">Logout</a></li>
-          </ul>
-        </aside>
-      </div>
-      <div class="column is-9">
-
-        <section class="hero is-primary welcome is-small">
-          <div class="hero-body">
-            <div class="container">
-              <h1 class="title">
-                {{ message }} {{ userTitle }}
-
-              </h1>
-              <h2 class="subtitle">
-                I hope you are having a great day!
-              </h2>
-            </div>
-          </div>
-        </section>
-        <section class="info-tiles">
-          <div class="tile is-ancestor has-text-centered">
-            <div class="tile is-parent">
-              <article class="tile is-child box">
-                <amount-header v-bind:amount="inc - exp"></amount-header>
-                <p class="subtitle">Net Income</p>
-              </article>
-            </div>
-            <div class="tile is-parent">
-              <article class="tile is-child box">
-                <amount-header v-bind:amount="exp"></amount-header>
-                <p class="subtitle">Expenses</p>
-              </article>
-            </div>
-            <div class="tile is-parent">
-              <article class="tile is-child box">
-                <amount-header v-bind:amount="inc"></amount-header>
-                <p class="subtitle">Income</p>
-              </article>
-            </div>
-
-          </div>
-        </section>
-        <div class="columns">
-          <div id="launch-modal-expense" class="column is-6">
-            <div class="card events-card">
-              <header class="card-header">
-                <p class="card-header-title">
-                  Expenses
+        <div class="column">
+            <aside class="menu">
+                <p class="menu-label">
+                    General
                 </p>
-                <a href="#" @click="expenseModal" class="card-header-icon" aria-label="more options">
+                <ul class="menu-list">
+                    <li><a class="is-active">Dashboard</a></li>
+                    <li><a>Customers</a></li>
+                </ul>
+                <p class="menu-label">
+                    Budget
+                </p>
+                <ul class="menu-list">
+
+                    <li>
+                        <a>Manage Your Budget</a>
+                        <ul>
+                            <li><a @click="expenseModal">Add Expense</a></li>
+                            <li><a @click="expenseModal">Add Income</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+                <p class="menu-label">
+                    Account
+                </p>
+                <ul class="menu-list">
+                    <li><a>Personal Details</a></li>
+                    <li><a>Settings</a></li>
+                    <li><a href="/users/logout">Logout</a></li>
+                </ul>
+            </aside>
+        </div>
+        <div class="column is-9">
+
+            <section class="hero is-primary welcome is-small">
+                <div class="hero-body">
+                    <div class="container">
+                        <h1 class="title">
+                            {{ message }} {{ userTitle }}
+
+                        </h1>
+                        <h2 class="subtitle">
+                            I hope you are having a great day!
+                        </h2>
+                    </div>
+                </div>
+            </section>
+            <section class="info-tiles">
+                <div class="tile is-ancestor has-text-centered">
+                    <div class="tile is-parent">
+                        <article class="tile is-child box">
+                            <amount-header v-bind:amount="inc - exp"></amount-header>
+                            <p class="subtitle">Net Income</p>
+                        </article>
+                    </div>
+                    <div class="tile is-parent">
+                        <article class="tile is-child box">
+                            <amount-header v-bind:amount="exp"></amount-header>
+                            <p class="subtitle">Expenses</p>
+                        </article>
+                    </div>
+                    <div class="tile is-parent">
+                        <article class="tile is-child box">
+                            <amount-header v-bind:amount="inc"></amount-header>
+                            <p class="subtitle">Income</p>
+                        </article>
+                    </div>
+
+                </div>
+            </section>
+            <div class="columns">
+                <div id="launch-modal-expense" class="column is-6">
+                    <div class="card events-card">
+                        <header class="card-header">
+                            <p class="card-header-title">
+                                Expenses
+                            </p>
+                            <a href="#" @click="expenseModal" class="card-header-icon" aria-label="more options">
                   <span class="icon" @click="expenseModal" alt="add expense">
                     <i class="fa fa-plus add" alt="Add Expense" aria-hidden="true"></i>
                   </span>
-                </a>
-              </header>
-              <div class="card-table">
-                <div class="content">
-
-
-                  <!-- Insert Vue Table here -->
-                  <budget-list v-on:destroy="deleteItem($event, true)" v-on:editor="editItem($event, true)"
-                    v-bind:budget="expenseList"></budget-list>
-
-
-
-
+                            </a>
+                        </header>
+                        <div class="card-table">
+                            <div class="content">
+                                <!-- Insert Vue Table here -->
+                                <budget-list v-on:destroy="deleteItem($event, true)"
+                                             v-on:editor="editItem($event, true)"
+                                             v-bind:budget="expenseList"></budget-list>
+                            </div>
+                        </div>
+                        <footer class="card-footer">
+                            <a href="#" class="card-footer-item">View All</a>
+                        </footer>
+                    </div>
                 </div>
-              </div>
-              <footer class="card-footer">
-                <a href="#" class="card-footer-item">View All</a>
-              </footer>
-            </div>
-          </div>
-          <div class="column is-6">
-            <div class="card events-card">
-              <header class="card-header">
-                <p class="card-header-title">
-                  Income
-                </p>
-                <a href="#" class="card-header-icon" aria-label="more options">
+                <div class="column is-6">
+                    <div class="card events-card">
+                        <header class="card-header">
+                            <p class="card-header-title">
+                                Income
+                            </p>
+                            <a href="#" class="card-header-icon" aria-label="more options">
                   <span class="icon" @click="expenseModal">
                     <i class="fa fa-plus add" aria-hidden="true"></i>
                   </span>
-                </a>
-              </header>
-              <div class="card-table">
-                <div class="content">
+                            </a>
+                        </header>
+                        <div class="card-table">
+                            <div class="content">
+                                <!-- Insert Vue Table here -->
+                                <budget-list v-bind:budget="incomeList"
+                                             v-on:destroy="deleteItem($event, false)"></budget-list>
+                            </div>
+                        </div>
+                        <footer class="card-footer">
+                            <a href="#" class="card-footer-item">View All</a>
 
-                  <!-- Insert Vue Table here -->
-                  <budget-list v-bind:budget="incomeList" v-on:destroy="deleteItem($event, false)"></budget-list>
-
+                        </footer>
+                    </div>
                 </div>
-              </div>
-              <footer class="card-footer">
-                <a href="#" class="card-footer-item">View All</a>
-
-              </footer>
             </div>
-          </div>
         </div>
-      </div>
     </div>
 
     <!-- Footer -->
     <footer class="footer">
-      <div class="content has-text-centered">
-        <p>
-          <strong>Bulgae</strong> by <a class="has-text-primary" href="http://ludahl.com">Josh Ludahl</a>. Made with <i
-            class="fas fa-beer"></i>
-          and <i class="fas fa-coffee"></i>.
-        </p>
+        <div class="content has-text-centered">
+            <p>
+                <strong>Bulgae</strong> by <a class="has-text-primary" href="https://ludahl.com">Josh Ludahl</a>. Made
+                with <i
+                        class="fas fa-beer"></i>
+                and <i class="fas fa-coffee"></i>.
+            </p>
 
 
-      </div>
+        </div>
     </footer>
     <!-- END Footer -->
 
-  </div>
-  <!-- END Main Section -->
+</div>
+<!-- END Main Section -->
 
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-  <script src="/static/javascript/bulma.js"></script>
-  <script src="/static/javascript/vue-modal.js"></script>
-
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="/public/javascript/bulma.js"></script>
+<script src="/public/javascript/vue-modal.js"></script>
 
 </body>
 

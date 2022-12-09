@@ -17,8 +17,8 @@ const ensureLogin = require('./api/middleware/login_check');
 const userCheck = require('./api/middleware/user_mw');
 
 //  DB
-const connectionURL ='mongodb://' + settings.MONGO_USER + ':' + settings.MONGO_PW + settings.MONGO_URI;
-mongoose.connect(connectionURL, {useNewUrlParser: true, useCreateIndex: true});
+const connectionURL ='mongodb://' + settings.MONGO_USER + ':' + settings.MONGO_PW + settings.MONGO_URL;
+mongoose.default.connect(connectionURL).then(r => r.connect)
 mongoose.Promise = global.Promise;
 
 //  Logging
@@ -35,7 +35,7 @@ app.use(coors);
 //  Paths
 app.set('views', path.join(__dirname, '/public/pages'));
 app.set('view engine', 'ejs');
-app.use('/static', express.static(__dirname + '/public'));
+app.use('/public', express.static(__dirname + '/public'));
 
 //  Cookies
 app.set('trust proxy', 1) // trust first proxy

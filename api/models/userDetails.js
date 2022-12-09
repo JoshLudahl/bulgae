@@ -6,6 +6,7 @@
 //  You can assign an owner to the other parts of your details schema, fully separating your user details.
 
 const mongoose = require('mongoose');
+const userSchema = require("express/lib/router/route");
 
 const userDetails = new mongoose.Schema({
     owner: String,

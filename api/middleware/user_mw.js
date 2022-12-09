@@ -25,5 +25,4 @@ module.exports = (req, res, next) => {
         res.locals.user = user;
         next();
     });
-
 };
