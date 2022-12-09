@@ -15,10 +15,14 @@ In addition, it uses the following for the front-end:
 * [Font Awesome](https://fontawesome.com/) for awesome fonts
 
 ## Docker Compose
-This project setup to run in Docker, with Mongo and Mongo Express.
+This Mongo database is set up to run in Docker, with Mongo and Mongo Express.
 Start your Docker service, then run `docker compose up`. 
 The project is set up to use root and example as the username and password for this sample application. 
 You can modify this in the `docker-compose.yaml` and the `settings.js` files as you see fit.
+
+## Running the application
+Once you have started the Mongo instance (see Docker Compose),
+run `npm run start` to start the application. Access the page at: `localhost:3000`
 
 ## Future plans
 Several components have broken over the last three years with general updates and haven't been maintained. 
