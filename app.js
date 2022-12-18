@@ -58,7 +58,6 @@ app.use(sessions({
 
 app.use(csrf());
 
-
 app.use(userCheck);
 //  ROUTES
 //  Landing Route
@@ -82,14 +81,19 @@ app.use((req, res, next) => {
     next(error);
 });
 
-app.use((error, req, res, next) => {
-    res.status(error.status || 500);
+function errorHandler(err, req, res, next) {
+    if (res.headersSent) {
+        return next(err)
+    }
+    res.status(err.status || 500)
     res.json({
         error: {
-            message: error.message
+            message: "Unable to load given resource."
         }
     });
-});
+}
+
+app.use(errorHandler);
 
 //  export the app
 module.exports = app;
