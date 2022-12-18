@@ -1,11 +1,12 @@
 {
-  "name": "Bulgae",
+  "name": "bulgae",
   "version": "0.0.1",
   "description": "Welcome to Bulgae, a user based budget application.",
   "main": "server.js",
   "scripts": {
     "test": "test",
-    "start": "nodemon server.js"
+    "start": "node ./server.js",
+    "dev": "nodemon server.js"
   },
   "repository": {
     "type": "git",
