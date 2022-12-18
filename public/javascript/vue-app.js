@@ -1,12 +1,12 @@
-var app = new Vue({
+const app = new Vue({
     el: '#app',
     data: {
-      message: 'Welcomee, ',
-      budgets: []
+        message: 'Welcomee, ',
+        budgets: []
     }
-  });
+});
 
-  // register the grid component
+// register the grid component
 Vue.component('demo-grid', {
     template: '#grid-template',
     props: {
@@ -15,8 +15,8 @@ Vue.component('demo-grid', {
       filterKey: String
     },
     data: function () {
-      var sortOrders = {}
-      this.columns.forEach(function (key) {
+        const sortOrders = {};
+        this.columns.forEach(function (key) {
         sortOrders[key] = 1
       })
       return {
@@ -26,11 +26,11 @@ Vue.component('demo-grid', {
     },
     computed: {
       filteredData: function () {
-        var sortKey = this.sortKey
-        var filterKey = this.filterKey && this.filterKey.toLowerCase()
-        var order = this.sortOrders[sortKey] || 1
-        var data = this.data
-        if (filterKey) {
+          const sortKey = this.sortKey;
+          const filterKey = this.filterKey && this.filterKey.toLowerCase();
+          const order = this.sortOrders[sortKey] || 1;
+          let data = this.data;
+          if (filterKey) {
           data = data.filter(function (row) {
             return Object.keys(row).some(function (key) {
               return String(row[key]).toLowerCase().indexOf(filterKey) > -1
